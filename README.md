@@ -1,1 +1,2 @@
-# DineFinder
+# MealReel
+CS102 Project Work
