@@ -18,12 +18,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
-public class SignUpAsCustomer {
+public class SignUpAsRestaurantOwner {
     VBox root;
     HBox subRoot1;
     HBox subRoot2;
+    HBox subRoot3;
+    HBox subRoot4;
 
-    public SignUpAsCustomer() {
+    public SignUpAsRestaurantOwner() {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
@@ -35,6 +37,34 @@ public class SignUpAsCustomer {
         TextField password = createTextField("Enter your password");
 
         TextField passwordAgain = createTextField("Enter your password again");
+
+        TextField restaurantName = createTextField("Enter the name of your restaurant");
+
+        TextField city = createTextField("Enter the city your restaurant is found at");
+
+        TextField district = createTextField("Enter the district your restaurant is found at");
+
+        TextField street = createTextField("Enter the street your restaurant is found at");
+
+        TextField description = createTextField("Enter a short description for your restaurant");
+        description.setMaxWidth(1450);
+
+        ImageView image = new ImageView(new Image("BackButton.png"));
+        image.setFitHeight(30);
+        image.setFitWidth(30);
+
+        Button back = createButton("");
+        back.setGraphic(image);
+
+        back.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SignUpChoice signUpChoice = new SignUpChoice();
+                signUpChoice.navigate();
+            }
+            
+        });
 
         Button signUp = createButton("Sign up");
 
@@ -69,30 +99,14 @@ public class SignUpAsCustomer {
                     email.setText("Enter your email");
                 }
                 else {
-                    Customer customer = new Customer(password.getText(), email.getText(), username.getText());
-                    DineFinderApplication.listOfUsers.getUserList().add(customer);
+                    Address address = new Address(street.getText(), district.getText(), city.getText());
+                    RestaurantOwner restaurantOwner = new RestaurantOwner(restaurantName.getText(), password.getText(), email.getText(), username.getText(), address, description.getText());
+                    DineFinderApplication.listOfUsers.getUserList().add(restaurantOwner);
                     Login login = new Login();
                     login.navigate();
                 }
             }
 
-        });
-
-        ImageView image = new ImageView(new Image("BackButton.png"));
-        image.setFitHeight(30);
-        image.setFitWidth(30);
-
-        Button back = createButton("");
-        back.setGraphic(image);
-
-        back.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                SignUpChoice signUpChoice = new SignUpChoice();
-                signUpChoice.navigate();
-            }
-            
         });
 
         password.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -155,9 +169,9 @@ public class SignUpAsCustomer {
 
         });
 
-        Label signUpAsCustomer = new Label("Sign up as customer");
-        signUpAsCustomer.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
-        signUpAsCustomer.setTextFill(Color.WHITE);
+        Label signUpAsRestaurantOwner = new Label("Sign up as restaurant owner");
+        signUpAsRestaurantOwner.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
+        signUpAsRestaurantOwner.setTextFill(Color.WHITE);
 
         Label empty = new Label();
 
@@ -171,7 +185,17 @@ public class SignUpAsCustomer {
 
         subRoot2.getChildren().addAll(password, passwordAgain);
 
-        root.getChildren().addAll(signUpAsCustomer, empty, subRoot1, subRoot2, signUp, back);
+        subRoot3 = new HBox(30);
+        subRoot3.setAlignment(Pos.CENTER);
+
+        subRoot3.getChildren().addAll(restaurantName, city);
+
+        subRoot4 = new HBox(30);
+        subRoot4.setAlignment(Pos.CENTER);
+
+        subRoot4.getChildren().addAll(district, street);
+
+        root.getChildren().addAll(signUpAsRestaurantOwner, empty, subRoot1, subRoot2, subRoot3, subRoot4, description, signUp, back);
     }
 
     //a method to create a button with the given text
@@ -187,7 +211,7 @@ public class SignUpAsCustomer {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.ORANGERED, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.ORANGERED, new CornerRadii(30), new Insets(0))));
             }
             
         });
@@ -207,13 +231,12 @@ public class SignUpAsCustomer {
 
     //a method to create a text field with the given text
     public TextField createTextField(String text) {
-        //Text Field object is created with the desired traits
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         textField.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
         textField.setStyle("-fx-text-inner-color: white");
         textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(650);
+        textField.setMinWidth(710);
 
         textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
 

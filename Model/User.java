@@ -3,14 +3,12 @@ public abstract class User {
     protected String password;
     protected String email;
     protected String username;
-    protected Address address;
 
     //constructor
-    public User(String password, String email, String username, Address address) {
+    public User(String password, String email, String username) {
         setPassword(password);
         setEmail(email);
         setUsername(username);
-        setAddress(address);
     }
 
     //getters
@@ -26,10 +24,6 @@ public abstract class User {
         return username;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
     //setters
     public void setPassword(String password) {
         this.password = password;
@@ -41,14 +35,5 @@ public abstract class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Email: " + email + "\nAddress: " + address;
     }
 }

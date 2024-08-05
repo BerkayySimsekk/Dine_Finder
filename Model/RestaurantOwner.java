@@ -4,21 +4,20 @@ public class RestaurantOwner extends User {
     private static final double MAX_RATING = 5;
 
     //instance data members
-    private String phoneNumber;
     private String description;
     private String restaurantName;
     private Menu menu;
     private double rating;
     private ArrayList<Integer> givenRatings;
     private ArrayList<String> commentsOfRestaurant;
+    private Address address;
 
     //constructor
-    public RestaurantOwner(String restaurantName, Menu menu, String password, String email, String username, Address address, String phoneNumber, String description) {
-        super(password, email, username, address);
+    public RestaurantOwner(String restaurantName, String password, String email, String username, Address address, String description) {
+        super(password, email, username);
+        setAddress(address);
         setDescription(description);
-        setPhoneNumber(phoneNumber);
         setRestaurantName(restaurantName);
-        setMenu(menu);
         rating = 0;
         givenRatings = new ArrayList<Integer>();
         commentsOfRestaurant = new ArrayList<String>();
@@ -27,6 +26,10 @@ public class RestaurantOwner extends User {
     //getters
     public ArrayList<Integer> getGivenRatings() {
         return givenRatings;
+    }
+
+    public Address getAddress() {
+        return address;
     }
 
     public String getRestaurantName() {
@@ -45,10 +48,6 @@ public class RestaurantOwner extends User {
         return commentsOfRestaurant;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -62,12 +61,12 @@ public class RestaurantOwner extends User {
         this.menu = menu;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setAddress(Address address) {
+       this.address = address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 
     public void setDescription(String description) {
@@ -108,6 +107,6 @@ public class RestaurantOwner extends User {
 
     @Override
     public String toString() {
-        return "Restaurant's Name: " + restaurantName + "\n" + super.toString() + "\nRating: " + rating + "/" + MAX_RATING + "\nMenu: " + menu;
+        return "Restaurant's Name: " + restaurantName + "\nAddress: " + address + "\nRating: " + rating + "/" + MAX_RATING + "\nMenu: " + menu;
     }
 } 

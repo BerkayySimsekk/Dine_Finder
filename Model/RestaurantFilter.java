@@ -8,7 +8,7 @@ public class RestaurantFilter implements FilterableRestaurant{
 
     //constructor
     public RestaurantFilter() {
-        this.listOfUsers = MealReelApplication.listOfUsers;
+        this.listOfUsers = DineFinderApplication.listOfUsers;
         this.restaurantOwners = listOfUsers.getRestaurantOwnersFromListOfUsers();
         cloneRestaurantsListToFilteredRestaurantsList();
     }
