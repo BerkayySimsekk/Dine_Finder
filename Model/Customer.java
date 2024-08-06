@@ -24,9 +24,4 @@ public class Customer extends User {
     public void addCommentToCustCommentList(String comment) {
         commentsGivenByCustomer.add(comment);
     }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

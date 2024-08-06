@@ -2,15 +2,13 @@ public class Item {
     //instance data members
     private String name;
     private String type;
-    private double priceWithoutDiscount;
-    private double priceWithDiscount;
+    private double price;
 
     //constructor
-    public Item(String name, String type, double priceWithoutDiscount, double priceWithDiscount) {
+    public Item(String name, String type, double price) {
         setName(name);
         setType(type);
-        setPriceWithoutDiscount(priceWithoutDiscount);
-        setPriceWithDiscount(priceWithDiscount);
+        setPrice(price);
     }
 
     //getters
@@ -22,12 +20,8 @@ public class Item {
         return type;
     }
 
-    public double getPriceWithoutDiscount() {
-        return priceWithoutDiscount;
-    }
-
-    public double getPriceWithDiscount() {
-        return priceWithDiscount;
+    public double getPrice() {
+        return price;
     }
 
     //setters
@@ -39,16 +33,12 @@ public class Item {
         this.type = type;
     }
 
-    public void setPriceWithoutDiscount(double priceWithoutDiscount) {
-        this.priceWithoutDiscount = priceWithoutDiscount;
-    }
-
-    public void setPriceWithDiscount(double priceWithDiscount) {
-        this.priceWithDiscount = priceWithDiscount;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        return name + "  TL" + priceWithDiscount;
+        return name + "  TL" + price;
     }
 }

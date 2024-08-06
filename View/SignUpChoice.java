@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
-public class SignUpChoice {
+public class SignUpChoice implements Navigable {
     VBox root;
     Button signUpAsCustomer;
     Button signUpAsRestaurantOwner;

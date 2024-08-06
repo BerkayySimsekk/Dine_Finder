@@ -46,14 +46,14 @@ public class Menu implements SortableMenu {
     }
 
     @Override
-    public void sortItemsByPriceWithDiscount() {
+    public void sortItemsByPrice() {
         Item temporary;
 
         //bubble sort algorithm that ends if there is nothing left to swap and sorts according to the prices of the items
         for(int n = 0; n < menu.size() - 1; n++) {
 
             for(int j = 0; j < menu.size() - n - 1; j++) {
-                if(menu.get(j + 1).getPriceWithDiscount() < menu.get(j).getPriceWithDiscount()) {
+                if(menu.get(j + 1).getPrice() < menu.get(j).getPrice()) {
                     //swapping the found items
                     temporary = menu.get(j);
                     menu.set(j, menu.get(j + 1));

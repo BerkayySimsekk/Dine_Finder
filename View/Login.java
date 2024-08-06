@@ -23,6 +23,7 @@ public class Login implements Navigable{
         //the layout of the stage is created
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
+        root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
 
         //Text Field objects
         TextField usernameOrEmail = createTextField("Enter your username or email");
@@ -45,7 +46,7 @@ public class Login implements Navigable{
                         isFound = true;
                         DineFinderApplication.currentUser = DineFinderApplication.listOfUsers.getUserList().get(n);
                         MainScreen mainScreen = new MainScreen();
-                        // change mainScreen.navigate();
+                        mainScreen.navigate();
                     }
                 }
 
@@ -81,7 +82,6 @@ public class Login implements Navigable{
         title.setTextFill(Color.WHITE);
         
         //the nodes are added to the root
-        root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
         root.getChildren().addAll(title, empty, usernameOrEmail, password, login, haveNotSignedUpYet);  
     }
 
@@ -109,6 +109,7 @@ public class Login implements Navigable{
             @Override
             public void handle(MouseEvent event) {
                 button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+
             }
             
         });
@@ -116,8 +117,8 @@ public class Login implements Navigable{
         return button;
     }
 
-    //a method to create a text field with the given text
-    public TextField createTextField(String text) {
+     //a method to create a text field with the given text
+     public TextField createTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         textField.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));

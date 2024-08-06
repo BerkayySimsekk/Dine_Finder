@@ -50,7 +50,7 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             //the second loop checks the menu items of the restaurant owner found by the first loop
             for(int k = 0; k < amountOfItemsInCurrentMenu; k++) {
-                if(currentMenuItems.get(k).getType().equalsIgnoreCase(type)) {
+                if(currentMenuItems.get(k).getType().toLowerCase().contains(type.toLowerCase())) {
                     isFound = true;
                 }
             }
@@ -62,36 +62,6 @@ public class RestaurantFilter implements FilterableRestaurant{
                 n--;
             }
         }    
-    }
-
-    @Override
-    public void includesGivenRestaurantName(String restaurantName) {
-        String name;
-        boolean isFound;
-
-        //the first loop iterates through the list of filtered restaurant owners
-        for(int n = 0; n < filteredRestaurantOwners.size(); n++) {
-            isFound = false;
-            name = filteredRestaurantOwners.get(n).getRestaurantName();
-
-            if(name.equalsIgnoreCase(restaurantName)) {
-                isFound = true;
-            }
-
-            //if the given type is not found in anywhere of the menu, this restaurant is removed from the filtered restaurants list
-            if(!isFound) {
-                filteredRestaurantOwners.remove(n);
-                //if an element is removed we need to adjust the index of the cursor to avoid skipping an element
-                n--;
-            }
-        }  
-        
-        for (int i = 0; i < restaurantOwners.size() - 1; i++) {
-            if(!filteredRestaurantOwners.get(0).getRestaurantName().equalsIgnoreCase(restaurantOwners.get(i).getRestaurantName()))
-            {
-                filteredRestaurantOwners.add(restaurantOwners.get(i));
-            }
-        }
     }
 
     //filters the restaurants in a way that only the restaurants which include the given item are shown
@@ -109,7 +79,7 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             //the second loop checks the menu items of the restaurant owner found by the first loop
             for(int k = 0; k < amountOfItemsInCurrentMenu; k++) {
-                if(currentMenuItems.get(k).getName().equalsIgnoreCase(name)) {
+                if(currentMenuItems.get(k).getName().toLowerCase().contains(name.toLowerCase())) {
                     isFound = true;
                 }
             }
@@ -138,7 +108,7 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             //the second loop checks the menu items of the restaurant owner found by the first loop
             for(int k = 0; k < amountOfItemsInCurrentMenu; k++) {
-                if(currentMenuItems.get(k).getPriceWithDiscount() <= max && currentMenuItems.get(k).getPriceWithDiscount() >= min) {
+                if(currentMenuItems.get(k).getPrice() <= max && currentMenuItems.get(k).getPrice() >= min) {
                     isFound = true;
                 }
             }
@@ -201,23 +171,6 @@ public class RestaurantFilter implements FilterableRestaurant{
                 }
             }
         }     
-    }
-
-    //sorts the restaurants according the total discount they added for their items
-    @Override
-    public void sortByTotalDiscountOfItems() {
-        RestaurantOwner temporary;
-
-        for(int n = 0; n < filteredRestaurantOwners.size() - 1; n++) {
-            for(int j = 0; j < filteredRestaurantOwners.size() - n - 1; j++) { 
-                if(filteredRestaurantOwners.get(j + 1).calculateTotalDiscounts() > filteredRestaurantOwners.get(j).calculateTotalDiscounts()) {
-                    //swapping the found restaurants
-                    temporary = filteredRestaurantOwners.get(j);
-                    filteredRestaurantOwners.set(j, filteredRestaurantOwners.get(j + 1));
-                    filteredRestaurantOwners.set(j + 1, temporary);
-                }
-            }
-        }      
     }
 
     //shows the restaurants that are found in the given city

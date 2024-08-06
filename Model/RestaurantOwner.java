@@ -92,18 +92,6 @@ public class RestaurantOwner extends User {
 
         this.rating = TotalOfRatings / numbersOfRatingsGiven; 
     }
-    //calculate total amount of discounts of the menu items
-    public double calculateTotalDiscounts() {
-        double discountSum;
-        
-        discountSum = 0;
-
-        for(int n = 0; n < menu.getMenuAsArrayList().size(); n++) {
-            discountSum += menu.getMenuAsArrayList().get(n).getPriceWithoutDiscount() - menu.getMenuAsArrayList().get(n).getPriceWithDiscount(); 
-        }
-
-        return discountSum;
-    }
 
     @Override
     public String toString() {

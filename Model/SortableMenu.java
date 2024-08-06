@@ -1,5 +1,5 @@
 public interface SortableMenu {
     public void sortItemsByAlphabeticalOrder();
-    public void sortItemsByPriceWithDiscount();
+    public void sortItemsByPrice();
     public void sortItemsByType();
 }
