@@ -40,7 +40,7 @@ public class CustomerProfile implements Navigable{
 
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
-        root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
+        root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
         TextField username = createUneditableTextField("Username: " + currentCustomer.getUsername());
 
@@ -48,7 +48,7 @@ public class CustomerProfile implements Navigable{
 
         TextField password = createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()));
 
-        applyUsername = createButtonWithGivenImage(new Image("Apply.png"), 30, 30);
+        applyUsername = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
         applyUsername.setVisible(false);
 
         applyUsername.setOnAction(new EventHandler<ActionEvent>() {
@@ -96,7 +96,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyEmail = createButtonWithGivenImage(new Image("Apply.png"), 30, 30);
+        applyEmail = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
         applyEmail.setVisible(false);
 
         applyEmail.setOnAction(new EventHandler<ActionEvent>() {
@@ -143,7 +143,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyPassword = createButtonWithGivenImage(new Image("Apply.png"), 30, 30);
+        applyPassword = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
         applyPassword.setVisible(false);
 
         applyPassword.setOnAction(new EventHandler<ActionEvent>() {
@@ -167,7 +167,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editUsername = createButtonWithGivenImage(new Image("Edit.png"), 30, 30);
+        editUsername = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
 
         editUsername.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -181,7 +181,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editEmail = createButtonWithGivenImage(new Image("Edit.png"), 30, 30);
+        editEmail = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
 
         editEmail.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -195,7 +195,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editPassword = createButtonWithGivenImage(new Image("Edit.png"), 30, 30);
+        editPassword = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
 
         editPassword.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -209,7 +209,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        Button back = createButtonWithGivenImage(new Image("BackButton.png"), 30, 30);
+        Button back = createButtonWithGivenImage(new Image("BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -226,7 +226,6 @@ public class CustomerProfile implements Navigable{
         title.setTextFill(Color.WHITE);
 
         Label empty = new Label();
-        Label empty2 = new Label();
 
         subRoot1 = new HBox(10);
         subRoot1.setAlignment(Pos.CENTER);
@@ -240,7 +239,7 @@ public class CustomerProfile implements Navigable{
         subRoot3.setAlignment(Pos.CENTER);
         subRoot3.getChildren().addAll(password, applyPassword, editPassword);
 
-        root.getChildren().addAll(title, empty, subRoot1, subRoot2, subRoot3, empty2, back);
+        root.getChildren().addAll(title, empty, subRoot1, subRoot2, subRoot3, back);
     }
 
     public String createAsterisksWithTheLengthOfPassword(String password) {
@@ -268,16 +267,16 @@ public class CustomerProfile implements Navigable{
     public Button createButton(String text) {
         //a button object is created with the desired traits
         Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 30));
+        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
         //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.ORANGERED, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
             }
             
         });
@@ -287,7 +286,7 @@ public class CustomerProfile implements Navigable{
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
             }
             
         });
@@ -299,7 +298,7 @@ public class CustomerProfile implements Navigable{
     public TextField createEditableTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
         textField.setStyle("-fx-text-inner-color: white");
         textField.setAlignment(Pos.CENTER_LEFT);
         textField.setMinWidth(710);
@@ -334,10 +333,10 @@ public class CustomerProfile implements Navigable{
         //Text Field object is created with the desired traits
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
         textField.setStyle("-fx-text-inner-color: white");
         textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(650);
+        textField.setMinWidth(1450);
         textField.setEditable(false);
 
         return textField;

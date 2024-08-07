@@ -28,7 +28,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
     public SignUpAsRestaurantOwner() {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
-        root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
+        root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
         TextField username = createTextField("Enter your username");
 
@@ -50,8 +50,8 @@ public class SignUpAsRestaurantOwner implements Navigable {
         description.setMaxWidth(1450);
 
         ImageView image = new ImageView(new Image("BackButton.png"));
-        image.setFitHeight(30);
-        image.setFitWidth(30);
+        image.setFitHeight(35);
+        image.setFitWidth(35);
 
         Button back = createButton("");
         back.setGraphic(image);
@@ -202,16 +202,16 @@ public class SignUpAsRestaurantOwner implements Navigable {
     public Button createButton(String text) {
         //a button object is created with the desired traits
         Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 30));
+        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
         //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.ORANGERED, new CornerRadii(30), new Insets(0))));
+                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));
             }
             
         });
@@ -221,7 +221,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
             }
             
         });
@@ -233,7 +233,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
     public TextField createTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
         textField.setStyle("-fx-text-inner-color: white");
         textField.setAlignment(Pos.CENTER);
         textField.setMinWidth(710);

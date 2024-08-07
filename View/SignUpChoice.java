@@ -28,8 +28,8 @@ public class SignUpChoice implements Navigable {
         root.setAlignment(Pos.CENTER);;
 
         ImageView image = new ImageView(new Image("BackButton.png"));
-        image.setFitHeight(30);
-        image.setFitWidth(30);
+        image.setFitHeight(35);
+        image.setFitWidth(35);
 
         signUpAsCustomer = createButton("Sign up as customer");
         signUpAsCustomer.setMinWidth(500);
@@ -73,7 +73,7 @@ public class SignUpChoice implements Navigable {
         Label empty = new Label();
         
         //the nodes are added to the root
-        root.setBackground(new Background(new BackgroundFill(Color.ORANGE, new CornerRadii(0), new Insets(0))));
+        root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.getChildren().addAll(title, empty, signUpAsCustomer, signUpAsRestaurantOwner, back);  
     }
 
@@ -81,16 +81,16 @@ public class SignUpChoice implements Navigable {
     public Button createButton(String text) {
         //a button object is created with the desired traits
         Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 30));
+        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));
+        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
         //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.ORANGERED, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
             }
             
         });
@@ -100,7 +100,7 @@ public class SignUpChoice implements Navigable {
 
             @Override
             public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.DARKORANGE, new CornerRadii(30), new Insets(0))));   
+                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
             }
             
         });
