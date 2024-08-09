@@ -1,17 +1,14 @@
 public class Item {
-    //instance data members
     private String name;
     private String type;
     private double price;
 
-    //constructor
     public Item(String name, String type, double price) {
         setName(name);
         setType(type);
         setPrice(price);
     }
 
-    //getters
     public String getName() {
         return name;
     }
@@ -24,7 +21,6 @@ public class Item {
         return price;
     }
 
-    //setters
     public void setName(String name) {
         this.name = name;
     }
@@ -39,6 +35,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return name + "  TL" + price;
+        return "Name: " + name + "    Type: " + type + "    Price: "  + price + " TL";
     }
 }

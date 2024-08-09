@@ -20,7 +20,7 @@ import javafx.scene.text.FontWeight;
 
 public class SignUpAsRestaurantOwner implements Navigable {
     VBox root;
-    HBox subRoot1;
+    HBox subroot1;
     HBox subRoot2;
     HBox subRoot3;
     HBox subRoot4;
@@ -49,7 +49,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
         TextField description = createTextField("Enter a short description for your restaurant");
         description.setMaxWidth(1450);
 
-        ImageView image = new ImageView(new Image("BackButton.png"));
+        ImageView image = new ImageView(new Image("Images/BackButton.png"));
         image.setFitHeight(35);
         image.setFitWidth(35);
 
@@ -175,10 +175,10 @@ public class SignUpAsRestaurantOwner implements Navigable {
 
         Label empty = new Label();
 
-        subRoot1 = new HBox(30);
-        subRoot1.setAlignment(Pos.CENTER);
+        subroot1 = new HBox(30);
+        subroot1.setAlignment(Pos.CENTER);
 
-        subRoot1.getChildren().addAll(username, email);
+        subroot1.getChildren().addAll(username, email);
 
         subRoot2 = new HBox(30);
         subRoot2.setAlignment(Pos.CENTER);
@@ -195,18 +195,15 @@ public class SignUpAsRestaurantOwner implements Navigable {
 
         subRoot4.getChildren().addAll(district, street);
 
-        root.getChildren().addAll(signUpAsRestaurantOwner, empty, subRoot1, subRoot2, subRoot3, subRoot4, description, signUp, back);
+        root.getChildren().addAll(signUpAsRestaurantOwner, empty, subroot1, subRoot2, subRoot3, subRoot4, description, signUp, back);
     }
 
-    //a method to create a button with the given text
     public Button createButton(String text) {
-        //a button object is created with the desired traits
         Button button = new Button(text);
         button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
         button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
-        //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
@@ -216,7 +213,6 @@ public class SignUpAsRestaurantOwner implements Navigable {
             
         });
 
-        //the color of the button's background is changed back to its previous color if the mouse exits the area that this button can be found at
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
 
             @Override
@@ -229,7 +225,6 @@ public class SignUpAsRestaurantOwner implements Navigable {
         return button;
     }
 
-    //a method to create a text field with the given text
     public TextField createTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
@@ -262,7 +257,6 @@ public class SignUpAsRestaurantOwner implements Navigable {
         return textField;
     }
 
-    //this method is to set the root of the stage to the root created within this particular class
     public void navigate() {
         DineFinderApplication.stage.getScene().setRoot(root);
     }

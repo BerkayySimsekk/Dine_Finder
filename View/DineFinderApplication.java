@@ -7,26 +7,28 @@ import javafx.stage.Stage;
 public class DineFinderApplication extends Application {
 
     public static Stage stage;
-    public static ListOfUsers listOfUsers; //list of users which should be accesible for all pages
+    public static ListOfUsers listOfUsers;
     public static User currentUser;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         listOfUsers = new ListOfUsers();
+
         VBox defaultRoot = new VBox();
+
         Scene defaultScene = new Scene(defaultRoot);
 
         DineFinderApplication.stage = stage;
-        stage.getIcons().add(new Image("Logo.png"));
+        stage.getIcons().add(new Image("Images/Logo.png"));
         stage.setTitle("Dine Finder");
         stage.setResizable(true);
         stage.setMaximized(true);
         stage.setScene(defaultScene);
         
+        stage.show();
+
         Login login = new Login();
         login.navigate();
-
-        stage.show();
     }
     
     public static void main(String[] args) {

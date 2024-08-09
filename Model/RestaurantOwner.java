@@ -1,31 +1,34 @@
 import java.util.ArrayList;
 
 public class RestaurantOwner extends User {
+    @SuppressWarnings("unused")
     private static final double MAX_RATING = 5;
 
-    //instance data members
     private String description;
     private String restaurantName;
     private Menu menu;
     private double rating;
     private ArrayList<Integer> givenRatings;
-    private ArrayList<String> commentsOfRestaurant;
+    private ArrayList<User> ratingGivers;
     private Address address;
 
-    //constructor
     public RestaurantOwner(String restaurantName, String password, String email, String username, Address address, String description) {
         super(password, email, username);
         setAddress(address);
         setDescription(description);
         setRestaurantName(restaurantName);
         rating = 0;
+        menu = new Menu();
         givenRatings = new ArrayList<Integer>();
-        commentsOfRestaurant = new ArrayList<String>();
+        ratingGivers = new ArrayList<User>();
     }
 
-    //getters
     public ArrayList<Integer> getGivenRatings() {
         return givenRatings;
+    }
+
+    public ArrayList<User> getRatingGivers() {
+        return ratingGivers;
     }
 
     public Address getAddress() {
@@ -44,15 +47,10 @@ public class RestaurantOwner extends User {
         return rating;
     }
 
-    public ArrayList<String> getCommentsOfRestaurant() {
-        return commentsOfRestaurant;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    //setters
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
@@ -73,12 +71,7 @@ public class RestaurantOwner extends User {
         this.description = description;
     }
 
-    //add a comment to the restaurant given by the customer
-    public void addCommentsToRestaurant (String comment) {
-        commentsOfRestaurant.add(comment);
-    }
 
-    //calculate the rating of the restaurant by getting the average of the ratings given by the customers
     public void calculateRating() {
         double TotalOfRatings;
         double numbersOfRatingsGiven;
@@ -91,10 +84,5 @@ public class RestaurantOwner extends User {
         }
 
         this.rating = TotalOfRatings / numbersOfRatingsGiven; 
-    }
-
-    @Override
-    public String toString() {
-        return "Restaurant's Name: " + restaurantName + "\nAddress: " + address + "\nRating: " + rating + "/" + MAX_RATING + "\nMenu: " + menu;
     }
 } 

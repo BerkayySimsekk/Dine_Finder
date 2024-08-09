@@ -22,19 +22,15 @@ public class Login implements Navigable{
     String visiblePassword;
 
     public Login() {
-        //the layout of the stage is created
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
-        //Text Field objects
         TextField usernameOrEmail = createTextField("Enter your username or email");
         TextField password = createTextField("Enter your password");
 
-        //a button object that proceed the user to main page
         login = createButton("Login");
 
-        //after clicking the login button, the given information is checked if there is a match
         login.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -61,10 +57,8 @@ public class Login implements Navigable{
 
         });
 
-        //a button object to proceed the user to the sign up page
         Button haveNotSignedUpYet = createButton("You haven't signed up yet?");
 
-        //proceeding the user to sign up page if this button is clicked
         haveNotSignedUpYet.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -75,27 +69,21 @@ public class Login implements Navigable{
 
         });
 
-        //an empty label to create gaps
         Label empty = new Label();
 
-        //Label object to create the main title of this page
         Label title = new Label("Welcome to Dine Finder!");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
         
-        //the nodes are added to the root
         root.getChildren().addAll(title, empty, usernameOrEmail, password, login, haveNotSignedUpYet);  
     }
 
-    //a method to create a button with the given text
     public Button createButton(String text) {
-        //a button object is created with the desired traits
         Button button = new Button(text);
         button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
         button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
-        //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
@@ -105,7 +93,6 @@ public class Login implements Navigable{
             
         });
 
-        //the color of the button's background is changed back to its previous color if the mouse exits the area that this button can be found at
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
 
             @Override
@@ -120,7 +107,6 @@ public class Login implements Navigable{
     }
 
 
-     //a method to create a text field with the given text
      public TextField createTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
@@ -155,7 +141,6 @@ public class Login implements Navigable{
         return textField;
     }
 
-    //this method is to set the root of the stage to the root created within this particular class
     public void navigate() {
         DineFinderApplication.stage.getScene().setRoot(root);
     }

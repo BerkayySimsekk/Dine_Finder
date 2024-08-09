@@ -1,17 +1,14 @@
 public abstract class User {
-    //instance data members
     protected String password;
     protected String email;
     protected String username;
 
-    //constructor
     public User(String password, String email, String username) {
         setPassword(password);
         setEmail(email);
         setUsername(username);
     }
 
-    //getters
     public String getPassword() {
         return password;
     }
@@ -24,7 +21,6 @@ public abstract class User {
         return username;
     }
 
-    //setters
     public void setPassword(String password) {
         this.password = password;
     }

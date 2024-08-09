@@ -23,7 +23,7 @@ import javafx.scene.text.FontWeight;
 
 public class CustomerProfile implements Navigable{
     VBox root;
-    HBox subRoot1;
+    HBox subroot1;
     HBox subRoot2;
     HBox subRoot3;
     boolean usernameAlreadyExists;
@@ -48,7 +48,7 @@ public class CustomerProfile implements Navigable{
 
         TextField password = createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()));
 
-        applyUsername = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyUsername = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyUsername.setVisible(false);
 
         applyUsername.setOnAction(new EventHandler<ActionEvent>() {
@@ -96,7 +96,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyEmail = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyEmail = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyEmail.setVisible(false);
 
         applyEmail.setOnAction(new EventHandler<ActionEvent>() {
@@ -143,7 +143,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyPassword = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyPassword = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyPassword.setVisible(false);
 
         applyPassword.setOnAction(new EventHandler<ActionEvent>() {
@@ -167,7 +167,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editUsername = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editUsername = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editUsername.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -181,7 +181,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editEmail = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editEmail = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editEmail.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -195,7 +195,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editPassword = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editPassword = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editPassword.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -209,7 +209,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        Button back = createButtonWithGivenImage(new Image("BackButton.png"), 35, 35);
+        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -227,9 +227,9 @@ public class CustomerProfile implements Navigable{
 
         Label empty = new Label();
 
-        subRoot1 = new HBox(10);
-        subRoot1.setAlignment(Pos.CENTER);
-        subRoot1.getChildren().addAll(username, applyUsername, editUsername);
+        subroot1 = new HBox(10);
+        subroot1.setAlignment(Pos.CENTER);
+        subroot1.getChildren().addAll(username, applyUsername, editUsername);
 
         subRoot2 = new HBox(10);
         subRoot2.setAlignment(Pos.CENTER);
@@ -239,7 +239,7 @@ public class CustomerProfile implements Navigable{
         subRoot3.setAlignment(Pos.CENTER);
         subRoot3.getChildren().addAll(password, applyPassword, editPassword);
 
-        root.getChildren().addAll(title, empty, subRoot1, subRoot2, subRoot3, back);
+        root.getChildren().addAll(title, empty, subroot1, subRoot2, subRoot3, back);
     }
 
     public String createAsterisksWithTheLengthOfPassword(String password) {
@@ -263,15 +263,12 @@ public class CustomerProfile implements Navigable{
         return button;
     }
 
-    //a method to create a button with the given text
     public Button createButton(String text) {
-        //a button object is created with the desired traits
         Button button = new Button(text);
         button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
         button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
-        //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
@@ -281,7 +278,6 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        //the color of the button's background is changed back to its previous color if the mouse exits the area that this button can be found at
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
 
             @Override
@@ -294,43 +290,7 @@ public class CustomerProfile implements Navigable{
         return button;
     }
 
-    //a method to create a text field with the given text
-    public TextField createEditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER_LEFT);
-        textField.setMinWidth(710);
-        textField.setMinHeight(65);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
-    }
-
-    //a method to create a text field with the given text
     public TextField createUneditableTextField(String text) {
-        //Text Field object is created with the desired traits
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));

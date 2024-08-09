@@ -22,19 +22,19 @@ import javafx.scene.text.FontWeight;
 public class MainScreen implements Navigable {
     BorderPane root;
 
-    VBox subRoot1;
-    HBox subRoot1OfSubRoot1;
+    VBox subroot1;
+    HBox subroot1OfSubroot1;
 
     VBox subRoot2;
-    HBox subRoot1OfSubRoot2;
-    HBox subRoot2OfSubRoot2;
+    HBox subroot1OfSubroot2;
+    HBox subroot2OfSubroot2;
 
     VBox subRoot3;
-    HBox subRoot1OfSubRoot3;
+    HBox subroot1OfSubroot3;
 
 
     public MainScreen() {
-        Button profile = createButtonWithGivenImage(new Image("ProfileIcon.png"), 70, 70);
+        Button profile = createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
 
         profile.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -54,27 +54,27 @@ public class MainScreen implements Navigable {
 
         //TODO add functionality to these buttons
 
-        Button search = createButtonWithGivenImage(new Image("SearchIcon.png"), 50, 50);
+        Button search = createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
 
         TextField searchFood = createTextField("What food would you like to search for?");
 
-        Button hamburger = createButtonWithGivenImage(new Image("Hamburger.png"), 50, 50);
+        Button hamburger = createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
 
-        Button pizza = createButtonWithGivenImage(new Image("Pizza.png"), 50, 50);
+        Button pizza = createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
 
-        Button frenchFries = createButtonWithGivenImage(new Image("FrenchFries.png"), 50, 50);
+        Button frenchFries = createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
 
-        Button chicken = createButtonWithGivenImage(new Image("Chicken.png"), 50, 50);
+        Button chicken = createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
 
-        Button steak = createButtonWithGivenImage(new Image("Steak.png"), 50, 50);
+        Button steak = createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
 
-        Button salad = createButtonWithGivenImage(new Image("Salad.png"), 50, 50);
+        Button salad = createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
 
-        Button hotdog = createButtonWithGivenImage(new Image("Hotdog.png"), 50, 50);
+        Button hotdog = createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
 
-        Button pasta = createButtonWithGivenImage(new Image("Pasta.png"), 50, 50);
+        Button pasta = createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
 
-        Button back = createButtonWithGivenImage(new Image("BackButton.png"), 70, 70);
+        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -98,31 +98,31 @@ public class MainScreen implements Navigable {
         Label empty5 = new Label();
         Label empty6 = new Label();
 
-        subRoot1OfSubRoot1 = new HBox(30);
-        subRoot1OfSubRoot1.getChildren().addAll(profile, empty);
+        subroot1OfSubroot1 = new HBox(30);
+        subroot1OfSubroot1.getChildren().addAll(profile, empty);
 
-        subRoot1 = new VBox(10);
-        subRoot1.getChildren().addAll(empty2, subRoot1OfSubRoot1);
+        subroot1 = new VBox(10);
+        subroot1.getChildren().addAll(empty2, subroot1OfSubroot1);
 
-        subRoot1OfSubRoot2 = new HBox(10);
-        subRoot1OfSubRoot2.setAlignment(Pos.CENTER);
-        subRoot1OfSubRoot2.getChildren().addAll(searchFood, search);
+        subroot1OfSubroot2 = new HBox(10);
+        subroot1OfSubroot2.setAlignment(Pos.CENTER);
+        subroot1OfSubroot2.getChildren().addAll(searchFood, search);
 
-        subRoot2OfSubRoot2 = new HBox(10);
-        subRoot2OfSubRoot2.setAlignment(Pos.CENTER);
-        subRoot2OfSubRoot2.getChildren().addAll(hamburger, pizza, frenchFries, chicken, steak, salad, hotdog, pasta);
+        subroot2OfSubroot2 = new HBox(10);
+        subroot2OfSubroot2.setAlignment(Pos.CENTER);
+        subroot2OfSubroot2.getChildren().addAll(hamburger, pizza, frenchFries, chicken, steak, salad, hotdog, pasta);
 
         subRoot2 = new VBox(10);
         subRoot2.setAlignment(Pos.CENTER);
-        subRoot2.getChildren().addAll(title, empty3, empty4, subRoot1OfSubRoot2, subRoot2OfSubRoot2);
+        subRoot2.getChildren().addAll(title, empty3, empty4, subroot1OfSubroot2, subroot2OfSubroot2);
 
-        subRoot1OfSubRoot3 = new HBox(30);
-        subRoot1OfSubRoot3.getChildren().addAll(empty5, back);
+        subroot1OfSubroot3 = new HBox(30);
+        subroot1OfSubroot3.getChildren().addAll(empty5, back);
 
         subRoot3 = new VBox(10);
-        subRoot3.getChildren().addAll(empty6, subRoot1OfSubRoot3);
+        subRoot3.getChildren().addAll(empty6, subroot1OfSubroot3);
 
-        root = new BorderPane(subRoot2, null, subRoot1, null, subRoot3);
+        root = new BorderPane(subRoot2, null, subroot1, null, subRoot3);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
     }
 
@@ -137,15 +137,12 @@ public class MainScreen implements Navigable {
         return button;
     }
     
-    //a method to create a button with the given text
     public Button createButton(String text) {
-        //a button object is created with the desired traits
         Button button = new Button(text);
         button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
         button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
-        //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
@@ -155,7 +152,6 @@ public class MainScreen implements Navigable {
             
         });
 
-        //the color of the button's background is changed back to its previous color if the mouse exits the area that this button can be found at
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
 
             @Override
@@ -168,7 +164,6 @@ public class MainScreen implements Navigable {
         return button;
     }
 
-    //a method to create a text field with the given text
     public TextField createTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));

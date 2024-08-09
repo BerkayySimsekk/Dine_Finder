@@ -18,7 +18,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,7 +26,7 @@ import javafx.scene.text.FontWeight;
 
 public class RestaurantOwnerProfile implements Navigable{
     VBox root;
-    HBox subRoot1;
+    HBox subroot1;
     HBox subRoot2;
     HBox subRoot3;
     HBox subRoot4;
@@ -67,7 +66,7 @@ public class RestaurantOwnerProfile implements Navigable{
 
         TextField description = createUneditableTextField("Description: " + currentRestaurantOwner.getDescription());
 
-        applyRestaurantName = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyRestaurantName = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyRestaurantName.setVisible(false);
 
         applyRestaurantName.setOnAction(new EventHandler<ActionEvent>() {
@@ -93,7 +92,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        applyAddress = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyAddress = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyAddress.setVisible(false);
 
         applyAddress.setOnAction(new EventHandler<ActionEvent>() {
@@ -144,7 +143,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        applyDescription = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyDescription = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyDescription.setVisible(false);
 
         applyDescription.setOnAction(new EventHandler<ActionEvent>() {
@@ -170,7 +169,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        applyUsername = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyUsername = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyUsername.setVisible(false);
 
         applyUsername.setOnAction(new EventHandler<ActionEvent>() {
@@ -218,7 +217,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        applyEmail = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyEmail = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyEmail.setVisible(false);
 
         applyEmail.setOnAction(new EventHandler<ActionEvent>() {
@@ -265,7 +264,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        applyPassword = createButtonWithGivenImage(new Image("Apply.png"), 35, 35);
+        applyPassword = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyPassword.setVisible(false);
 
         applyPassword.setOnAction(new EventHandler<ActionEvent>() {
@@ -289,7 +288,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editRestaurantName = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editRestaurantName = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editRestaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -303,7 +302,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editDescription = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editDescription = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editDescription.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -317,7 +316,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editAddress = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editAddress = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editAddress.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -326,14 +325,14 @@ public class RestaurantOwnerProfile implements Navigable{
                 address.setText("city,district,street");
 
                 Timer myTimer = new Timer();
-                    myTimer.schedule(new TimerTask(){
+                myTimer.schedule(new TimerTask(){
 
-                        @Override
-                        public void run() {
-                            address.setText("");;
-                        }
+                    @Override
+                    public void run() {
+                        address.setText("");
+                    }
 
-                    }, 2000);
+                }, 2000);
 
                 address.setEditable(true);
                 applyAddress.setVisible(true);
@@ -342,7 +341,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editUsername = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editUsername = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editUsername.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -356,7 +355,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editEmail = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editEmail = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editEmail.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -370,7 +369,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        editPassword = createButtonWithGivenImage(new Image("Edit.png"), 35, 35);
+        editPassword = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editPassword.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -396,7 +395,7 @@ public class RestaurantOwnerProfile implements Navigable{
 
         });
 
-        Button back = createButtonWithGivenImage(new Image("BackButton.png"), 35, 35);
+        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -414,9 +413,9 @@ public class RestaurantOwnerProfile implements Navigable{
 
         Label empty = new Label();
 
-        subRoot1 = new HBox(10);
-        subRoot1.setAlignment(Pos.CENTER);
-        subRoot1.getChildren().addAll(username, applyUsername, editUsername);
+        subroot1 = new HBox(10);
+        subroot1.setAlignment(Pos.CENTER);
+        subroot1.getChildren().addAll(username, applyUsername, editUsername);
 
         subRoot2 = new HBox(10);
         subRoot2.setAlignment(Pos.CENTER);
@@ -438,7 +437,7 @@ public class RestaurantOwnerProfile implements Navigable{
         subRoot6.setAlignment(Pos.CENTER);
         subRoot6.getChildren().addAll(description, applyDescription, editDescription);
 
-        root.getChildren().addAll(title, empty, subRoot1, subRoot2, subRoot3, subRoot4, subRoot5, subRoot6, editMenu, back);
+        root.getChildren().addAll(title, empty, subroot1, subRoot2, subRoot3, subRoot4, subRoot5, subRoot6, editMenu, back);
     }
 
     public String createAsterisksWithTheLengthOfPassword(String password) {
@@ -462,15 +461,12 @@ public class RestaurantOwnerProfile implements Navigable{
         return button;
     }
 
-    //a method to create a button with the given text
     public Button createButton(String text) {
-        //a button object is created with the desired traits
         Button button = new Button(text);
         button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         button.setTextFill(Color.WHITE);
         button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
 
-        //the color of the button's background is changed if the mouse enters the area that this button can be found at
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
 
             @Override
@@ -480,7 +476,6 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        //the color of the button's background is changed back to its previous color if the mouse exits the area that this button can be found at
         button.setOnMouseExited(new EventHandler<MouseEvent>() {
 
             @Override
@@ -493,9 +488,7 @@ public class RestaurantOwnerProfile implements Navigable{
         return button;
     }
 
-    //a method to create a text field with the given text
     public TextField createUneditableTextField(String text) {
-        //Text Field object is created with the desired traits
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
