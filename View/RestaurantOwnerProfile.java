@@ -27,11 +27,11 @@ import javafx.scene.text.FontWeight;
 public class RestaurantOwnerProfile implements Navigable{
     VBox root;
     HBox subroot1;
-    HBox subRoot2;
-    HBox subRoot3;
-    HBox subRoot4;
-    HBox subRoot5;
-    HBox subRoot6;
+    HBox subroot2;
+    HBox subroot3;
+    HBox subroot4;
+    HBox subroot5;
+    HBox subroot6;
     boolean usernameAlreadyExists;
     boolean emailAlreadyExists;
     Button editUsername;
@@ -417,27 +417,27 @@ public class RestaurantOwnerProfile implements Navigable{
         subroot1.setAlignment(Pos.CENTER);
         subroot1.getChildren().addAll(username, applyUsername, editUsername);
 
-        subRoot2 = new HBox(10);
-        subRoot2.setAlignment(Pos.CENTER);
-        subRoot2.getChildren().addAll(email, applyEmail, editEmail);
+        subroot2 = new HBox(10);
+        subroot2.setAlignment(Pos.CENTER);
+        subroot2.getChildren().addAll(email, applyEmail, editEmail);
 
-        subRoot3 = new HBox(10);
-        subRoot3.setAlignment(Pos.CENTER);
-        subRoot3.getChildren().addAll(password, applyPassword, editPassword);
+        subroot3 = new HBox(10);
+        subroot3.setAlignment(Pos.CENTER);
+        subroot3.getChildren().addAll(password, applyPassword, editPassword);
 
-        subRoot4 = new HBox(10);
-        subRoot4.setAlignment(Pos.CENTER);
-        subRoot4.getChildren().addAll(restaurantName, applyRestaurantName, editRestaurantName);
+        subroot4 = new HBox(10);
+        subroot4.setAlignment(Pos.CENTER);
+        subroot4.getChildren().addAll(restaurantName, applyRestaurantName, editRestaurantName);
 
-        subRoot5 = new HBox(10);
-        subRoot5.setAlignment(Pos.CENTER);
-        subRoot5.getChildren().addAll(address, applyAddress, editAddress);
+        subroot5 = new HBox(10);
+        subroot5.setAlignment(Pos.CENTER);
+        subroot5.getChildren().addAll(address, applyAddress, editAddress);
 
-        subRoot6 = new HBox(10);
-        subRoot6.setAlignment(Pos.CENTER);
-        subRoot6.getChildren().addAll(description, applyDescription, editDescription);
+        subroot6 = new HBox(10);
+        subroot6.setAlignment(Pos.CENTER);
+        subroot6.getChildren().addAll(description, applyDescription, editDescription);
 
-        root.getChildren().addAll(title, empty, subroot1, subRoot2, subRoot3, subRoot4, subRoot5, subRoot6, editMenu, back);
+        root.getChildren().addAll(title, empty, subroot1, subroot2, subroot3, subroot4, subroot5, subroot6, editMenu, back);
     }
 
     public String createAsterisksWithTheLengthOfPassword(String password) {

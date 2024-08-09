@@ -65,13 +65,12 @@ public class EditMenu implements Navigable {
 
                 TextField itemInfo = createUneditableTextField(item.toString());
                 items.add(itemInfo);
-              
-                subroot1OfSubroot1.getChildren().add(itemInfo);               
+                
+                subroot1OfSubroot1.getChildren().add(itemInfo);
 
                 name.setText("Created successfully");
                 type.setText("Created successfully");
                 price.setText("Created successfully");
-
 
                 Timer myTimer = new Timer();
                 myTimer.schedule(new TimerTask(){
@@ -100,6 +99,8 @@ public class EditMenu implements Navigable {
                 for(int n = 0; n < items.size(); n++) {
                     if(item.toString().equals(items.get(n).getText())) {
                         isFound = true;
+
+                        currentRestaurantOwner.getMenu().removeItemFromMenu(item);
                         subroot1OfSubroot1.getChildren().remove(items.get(n));
                         items.remove(n);
                         n--;
@@ -121,7 +122,7 @@ public class EditMenu implements Navigable {
                         price.setText("Enter a price for the item");
                     }
 
-                    }, 1500);
+                    }, 1000);
                 }
                 else {
                     name.setText("Item not found");
@@ -138,7 +139,7 @@ public class EditMenu implements Navigable {
                         price.setText("Enter a price for the item");
                     }
 
-                    }, 1500);
+                    }, 1000);
                 }
             }
             
@@ -172,16 +173,17 @@ public class EditMenu implements Navigable {
         for(int n = 0; n < currentRestaurantOwner.getMenu().getMenuAsArrayList().size(); n++) {
             TextField itemInfo = createUneditableTextField(currentRestaurantOwner.getMenu().getMenuAsArrayList().get(n).toString());
             items.add(itemInfo);
+
             subroot1OfSubroot1.getChildren().add(itemInfo);
         }
 
         Label title = new Label("Edit Menu");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
-
+        
         Label empty = new Label();
         Label empty2 = new Label();
-        
+
         root = new VBox(30);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.setAlignment(Pos.CENTER);

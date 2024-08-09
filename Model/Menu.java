@@ -13,7 +13,12 @@ public class Menu{
     
     
     public void removeItemFromMenu(Item item) {
-        this.menu.remove(item);
+        for(int n = 0; n < menu.size(); n++) {
+            if(menu.get(n).getName().equals(item.getName()) && menu.get(n).getType().equals(item.getType()) && menu.get(n).getPrice() == item.getPrice()) {
+                menu.remove(n);
+                n--;
+            }
+        }   
     }
 
     public ArrayList<Item> getMenuAsArrayList() {

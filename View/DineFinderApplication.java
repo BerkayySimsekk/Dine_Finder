@@ -5,7 +5,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class DineFinderApplication extends Application {
-
     public static Stage stage;
     public static ListOfUsers listOfUsers;
     public static User currentUser;

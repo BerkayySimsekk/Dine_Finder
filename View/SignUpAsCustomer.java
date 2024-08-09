@@ -21,7 +21,8 @@ import javafx.scene.text.FontWeight;
 public class SignUpAsCustomer implements Navigable {
     VBox root;
     HBox subroot1;
-    HBox subRoot2;
+    HBox subroot2;
+    HBox subroot3;
 
     public SignUpAsCustomer() {
         root = new VBox(30);
@@ -35,6 +36,12 @@ public class SignUpAsCustomer implements Navigable {
         TextField password = createTextField("Enter your password");
 
         TextField passwordAgain = createTextField("Enter your password again");
+
+        TextField city = createTextField("Enter the city of your address");
+
+        TextField district = createTextField("Enter the district of your address");
+
+        TextField street = createTextField("Enter the street of your address");
 
         Button signUp = createButton("Sign up");
 
@@ -69,7 +76,8 @@ public class SignUpAsCustomer implements Navigable {
                     email.setText("Enter your email");
                 }
                 else {
-                    Customer customer = new Customer(password.getText(), email.getText(), username.getText());
+                    Address address = new Address(street.getText(), district.getText(), city.getText());
+                    Customer customer = new Customer(password.getText(), email.getText(), username.getText(), address);
                     DineFinderApplication.listOfUsers.getUserList().add(customer);
                     Login login = new Login();
                     login.navigate();
@@ -163,15 +171,17 @@ public class SignUpAsCustomer implements Navigable {
 
         subroot1 = new HBox(30);
         subroot1.setAlignment(Pos.CENTER);
-
         subroot1.getChildren().addAll(username, email);
 
-        subRoot2 = new HBox(30);
-        subRoot2.setAlignment(Pos.CENTER);
+        subroot2 = new HBox(30);
+        subroot2.setAlignment(Pos.CENTER);
+        subroot2.getChildren().addAll(password, passwordAgain);
 
-        subRoot2.getChildren().addAll(password, passwordAgain);
+        subroot3 = new HBox(30);
+        subroot3.setAlignment(Pos.CENTER);
+        subroot3.getChildren().addAll(city, district);
 
-        root.getChildren().addAll(signUpAsCustomer, empty, subroot1, subRoot2, signUp, back);
+        root.getChildren().addAll(signUpAsCustomer, empty, subroot1, subroot2, subroot3, street, signUp, back);
     }
 
     public Button createButton(String text) {
@@ -208,6 +218,7 @@ public class SignUpAsCustomer implements Navigable {
         textField.setStyle("-fx-text-inner-color: white");
         textField.setAlignment(Pos.CENTER);
         textField.setMinWidth(650);
+        textField.setMaxWidth(650);
 
         textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
 

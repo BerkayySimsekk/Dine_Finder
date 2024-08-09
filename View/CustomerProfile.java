@@ -1,3 +1,6 @@
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,16 +27,19 @@ import javafx.scene.text.FontWeight;
 public class CustomerProfile implements Navigable{
     VBox root;
     HBox subroot1;
-    HBox subRoot2;
-    HBox subRoot3;
+    HBox subroot2;
+    HBox subroot3;
+    HBox subroot4;
     boolean usernameAlreadyExists;
     boolean emailAlreadyExists;
     Button editUsername;
     Button applyPassword;
     Button applyEmail;
     Button applyUsername;
+    Button applyAddress;
     Button editEmail;
     Button editPassword;
+    Button editAddress;
 
     public CustomerProfile() {
         Customer currentCustomer = (Customer)DineFinderApplication.currentUser;
@@ -47,6 +53,8 @@ public class CustomerProfile implements Navigable{
         TextField email = createUneditableTextField("Email: " + currentCustomer.getEmail());
 
         TextField password = createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()));
+
+        TextField address = createUneditableTextField("Address: " + currentCustomer.getAddress().getCityName() + "," + currentCustomer.getAddress().getDistrictName() + "," + currentCustomer.getAddress().getStreetName());
 
         applyUsername = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyUsername.setVisible(false);
@@ -167,6 +175,57 @@ public class CustomerProfile implements Navigable{
             
         });
 
+        applyAddress = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
+        applyAddress.setVisible(false);
+
+        applyAddress.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                    
+                if(address.getText().equals("")) {
+                    address.setText("Address: " + currentCustomer.getAddress());
+                    applyAddress.setVisible(false);
+                    editAddress.setVisible(true);
+                    address.setEditable(false);
+                }
+                else {
+                    ArrayList<String> list = new ArrayList<String>();
+                    CharacterIterator it = new StringCharacterIterator(address.getText());
+                    String dividedAddress = "";
+
+                    for(int n = 0; n < address.getText().length(); n++) {
+                        if(it.current() != ',' && it.getIndex() != it.getEndIndex() - 1) {
+                            dividedAddress += it.current();
+                            it.next();
+                        }
+                        else {
+                            if(it.getIndex() == it.getEndIndex() - 1) {
+                                dividedAddress += it.current();
+                            }
+
+                            list.add(dividedAddress);
+                            dividedAddress = "";
+                            it.next();
+                        }
+                    }
+                    
+                    if(list.size() == 3) {
+                        currentCustomer.getAddress().setCityName(list.get(0));
+                        currentCustomer.getAddress().setDistrictName(list.get(1));
+                        currentCustomer.getAddress().setStreetName(list.get(2));    
+                    }
+
+                    applyAddress.setVisible(false);
+                    editAddress.setVisible(true);
+                    address.setEditable(false);
+                    address.setText("Address: " + currentCustomer.getAddress());
+                }
+    
+            }
+            
+        });
+
         editUsername = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editUsername.setOnAction(new EventHandler<ActionEvent>() {
@@ -209,6 +268,31 @@ public class CustomerProfile implements Navigable{
             
         });
 
+        editAddress = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
+
+        editAddress.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                address.setText("city,district,street");
+
+                Timer myTimer = new Timer();
+                myTimer.schedule(new TimerTask(){
+
+                    @Override
+                    public void run() {
+                        address.setText("");
+                    }
+
+                }, 2000);
+
+                address.setEditable(true);
+                applyAddress.setVisible(true);
+                editAddress.setVisible(false);
+            }
+            
+        });
+
         Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
@@ -231,15 +315,19 @@ public class CustomerProfile implements Navigable{
         subroot1.setAlignment(Pos.CENTER);
         subroot1.getChildren().addAll(username, applyUsername, editUsername);
 
-        subRoot2 = new HBox(10);
-        subRoot2.setAlignment(Pos.CENTER);
-        subRoot2.getChildren().addAll(email, applyEmail, editEmail);
+        subroot2 = new HBox(10);
+        subroot2.setAlignment(Pos.CENTER);
+        subroot2.getChildren().addAll(email, applyEmail, editEmail);
 
-        subRoot3 = new HBox(10);
-        subRoot3.setAlignment(Pos.CENTER);
-        subRoot3.getChildren().addAll(password, applyPassword, editPassword);
+        subroot3 = new HBox(10);
+        subroot3.setAlignment(Pos.CENTER);
+        subroot3.getChildren().addAll(password, applyPassword, editPassword);
 
-        root.getChildren().addAll(title, empty, subroot1, subRoot2, subRoot3, back);
+        subroot4 = new HBox(10);
+        subroot4.setAlignment(Pos.CENTER);
+        subroot4.getChildren().addAll(address, applyAddress, editAddress);
+
+        root.getChildren().addAll(title, empty, subroot1, subroot2, subroot3, subroot4, back);
     }
 
     public String createAsterisksWithTheLengthOfPassword(String password) {

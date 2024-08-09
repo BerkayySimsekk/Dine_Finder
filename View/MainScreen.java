@@ -34,6 +34,8 @@ public class MainScreen implements Navigable {
 
 
     public MainScreen() {
+        SearchPage.restaurantFilter = new RestaurantFilter();
+
         Button profile = createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
 
         profile.setOnAction(new EventHandler<ActionEvent>() {
@@ -52,30 +54,177 @@ public class MainScreen implements Navigable {
             
         });
 
-        //TODO add functionality to these buttons
+        TextField searchFood = createTextField("What food would you like to search for?");
 
         Button search = createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
 
-        TextField searchFood = createTextField("What food would you like to search for?");
+        search.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem(searchFood.getText());
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                    SearchPage.restaurantFilter.includesGivenItemType(searchFood.getText());
+                }
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
 
         Button hamburger = createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
 
+        hamburger.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("hamburger");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
+
         Button pizza = createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
+
+        pizza.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("pizza");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
 
         Button frenchFries = createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
 
+        frenchFries.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("fries");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
+
         Button chicken = createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
+
+        chicken.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("chicken");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
 
         Button steak = createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
 
+        steak.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("steak");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
+
         Button salad = createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
+
+        salad.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("salad");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
 
         Button hotdog = createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
 
+        hotdog.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("hotdog");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
+
         Button pasta = createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
 
-        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        pasta.setOnAction(new EventHandler<ActionEvent>() {
 
+            @Override
+            public void handle(ActionEvent event) {
+                SearchPage.restaurantFilter.includesGivenItem("pasta");
+
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                    SearchPage.restaurantFilter.resetFilter();
+                }
+
+                SearchPage searchPage = new SearchPage();
+                searchPage.navigate();
+            }
+            
+        });
+
+        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        
         back.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
