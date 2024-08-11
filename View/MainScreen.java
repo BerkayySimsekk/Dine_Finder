@@ -35,6 +35,7 @@ public class MainScreen implements Navigable {
 
     public MainScreen() {
         SearchPage.restaurantFilter = new RestaurantFilter();
+        SearchPage.searchFood = createEditableTextField("What food would you like to search for?");
 
         Button profile = createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
 
@@ -54,7 +55,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        TextField searchFood = createTextField("What food would you like to search for?");
+        TextField searchFood = createEditableTextField("What food would you like to search for?");
 
         Button search = createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
 
@@ -86,10 +87,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("burger");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("burger");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -104,10 +102,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("pizza");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("pizza");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -122,10 +117,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("fries");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("fries");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -140,10 +132,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("chicken");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("chicken");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -158,10 +147,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("steak");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("steak");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -176,10 +162,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("salad");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("salad");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -194,10 +177,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("hotdog");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("hotdog");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -212,10 +192,7 @@ public class MainScreen implements Navigable {
             @Override
             public void handle(ActionEvent event) {
                 SearchPage.restaurantFilter.includesGivenItem("pasta");
-
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
-                    SearchPage.restaurantFilter.resetFilter();
-                }
+                SearchPage.searchFood.setText("pasta");
 
                 SearchPage searchPage = new SearchPage();
                 searchPage.navigate();
@@ -313,7 +290,7 @@ public class MainScreen implements Navigable {
         return button;
     }
 
-    public TextField createTextField(String text) {
+    public TextField createEditableTextField(String text) {
         TextField textField = new TextField(text);
         textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
         textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));

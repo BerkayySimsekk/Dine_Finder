@@ -26,6 +26,7 @@ import javafx.scene.text.FontWeight;
 public class SearchPage implements Navigable {
     public static RestaurantFilter restaurantFilter;
     public static RestaurantOwner clickedRestaurantPage;
+    public static TextField searchFood;
 
     VBox root;
     VBox subroot1;
@@ -33,6 +34,7 @@ public class SearchPage implements Navigable {
     ScrollPane subroot3;
     VBox subroot1OfSubroot3;
     HBox subroot1OfSubroot1;
+    HBox subroot1OfSubroot2;
 
     public SearchPage() {
         subroot1OfSubroot3 = new VBox();
@@ -71,8 +73,6 @@ public class SearchPage implements Navigable {
 
             });
         }
-
-        TextField searchFood = createEditableTextField("What food would you like to search for?");
 
         Button search = createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 35, 35);
 
@@ -515,6 +515,25 @@ public class SearchPage implements Navigable {
             
         });
 
+        Button filterIcon = createButtonWithGivenImage(new Image("Images/Filter.png"), 30, 30);
+        filterIcon.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        filterIcon.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+            }
+            
+        });
+
+        filterIcon.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+            }
+            
+        });
+
         Label empty = new Label();
         Label empty2 = new Label();
         Label empty3 = new Label();
@@ -527,9 +546,13 @@ public class SearchPage implements Navigable {
         subroot1.setAlignment(Pos.TOP_LEFT);
         subroot1.getChildren().addAll(empty2, subroot1OfSubroot1);
 
+        subroot1OfSubroot2 = new HBox(0);
+        subroot1OfSubroot2.setAlignment(Pos.CENTER);
+        subroot1OfSubroot2.getChildren().addAll(filterIcon, filter);
+
         subroot2 = new HBox(10);
         subroot2.setAlignment(Pos.CENTER);
-        subroot2.getChildren().addAll(filter, searchFood, search);
+        subroot2.getChildren().addAll(subroot1OfSubroot2, searchFood, search);
 
         root = new VBox(30);
         root.setAlignment(Pos.TOP_CENTER);
