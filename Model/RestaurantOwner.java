@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 
 public class RestaurantOwner extends User {
-    @SuppressWarnings("unused")
-    private static final double MAX_RATING = 5;
+    public static final double MAX_RATING = 5;
 
     private String description;
     private String restaurantName;
     private Menu menu;
     private double rating;
-    private ArrayList<Integer> givenRatings;
+    private ArrayList<Double> givenRatings;
     private ArrayList<User> ratingGivers;
     private Address address;
 
@@ -19,11 +18,11 @@ public class RestaurantOwner extends User {
         setRestaurantName(restaurantName);
         rating = 0;
         menu = new Menu();
-        givenRatings = new ArrayList<Integer>();
+        givenRatings = new ArrayList<Double>();
         ratingGivers = new ArrayList<User>();
     }
 
-    public ArrayList<Integer> getGivenRatings() {
+    public ArrayList<Double> getGivenRatings() {
         return givenRatings;
     }
 
@@ -72,17 +71,21 @@ public class RestaurantOwner extends User {
     }
 
 
-    public void calculateRating() {
+    public double calculateRating() {
         double TotalOfRatings;
         double numbersOfRatingsGiven;
 
         TotalOfRatings = 0;
         numbersOfRatingsGiven = givenRatings.size();
 
+        if(numbersOfRatingsGiven == 0) {
+            return 0;
+        }
+
         for(int n = 0; n < numbersOfRatingsGiven; n++) {
             TotalOfRatings += givenRatings.get(n);
         }
 
-        this.rating = TotalOfRatings / numbersOfRatingsGiven; 
+        return TotalOfRatings / numbersOfRatingsGiven; 
     }
 } 

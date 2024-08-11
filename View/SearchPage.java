@@ -39,28 +39,15 @@ public class SearchPage implements Navigable {
         subroot1OfSubroot3.setAlignment(Pos.CENTER);
 
         subroot3 = new ScrollPane(subroot1OfSubroot3);
-        subroot3.setMaxHeight(630);
+        subroot3.setMaxHeight(600);
         subroot3.setVbarPolicy(ScrollBarPolicy.NEVER);
         subroot3.setHbarPolicy(ScrollBarPolicy.NEVER);
 
         subroot1OfSubroot3.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot3.getViewportBounds().getWidth(), subroot3.viewportBoundsProperty()));
 
-        Button searchResults = createButtonForRestaurants("Search results");
-
-        searchResults.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {}
-            
-        });
-
-        searchResults.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {}
-            
-        });
+        TextField searchResults = createUneditableTextField("Search results");
+        searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
 
         subroot1OfSubroot3.getChildren().add(searchResults);
 
@@ -107,6 +94,7 @@ public class SearchPage implements Navigable {
 
                 subroot1OfSubroot3.getChildren().clear();
                 TextField searchResults = createUneditableTextField("Search results");
+                searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                 subroot1OfSubroot3.getChildren().add(searchResults);
 
                 for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -139,6 +127,7 @@ public class SearchPage implements Navigable {
         filter.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
 
         ObservableList<String> filterList = filter.getItems();
+        filterList.add("Reset");
         filterList.add("Sort by alphabetical order");
         filterList.add("Sort by rating");
         filterList.add("Sort by popularity");
@@ -150,18 +139,50 @@ public class SearchPage implements Navigable {
         if(DineFinderApplication.currentUser instanceof Customer) {
             filterList.add("Find restaurants within your city");
             filterList.add("Find restaurants within your district");
-            filterList.add("Find restaurants within your city");
+            filterList.add("Find restaurants within your street");
         }
 
         filter.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
+                if(filter.valueProperty().get().equals("Reset")) {
+                    restaurantFilter.resetFilter();
+
+                    subroot1OfSubroot3.getChildren().clear();
+                    TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
+                    subroot1OfSubroot3.getChildren().add(searchResults);
+
+                    for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
+                        Button restaurantName = createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+
+                        restaurantName.setOnAction(new EventHandler<ActionEvent>() {
+
+                            @Override
+                            public void handle(ActionEvent event) {
+                                for(int n = 0 ; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
+                                    if(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName().equals(restaurantName.getText())) {
+                                        clickedRestaurantPage = restaurantFilter.getFilteredRestaurants().get(n);
+
+                                        RestaurantPage restaurantPage = new RestaurantPage();
+                                        restaurantPage.navigate();
+                                    }
+                                }
+                            }
+
+                        });
+
+                        subroot1OfSubroot3.getChildren().add(restaurantName);
+                    }
+                }
+
                 if(filter.valueProperty().get().equals("Sort by alphabetical order")) {
                     restaurantFilter.sortByAlphabeticalOrderOfRestaurantName();
 
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -192,6 +213,7 @@ public class SearchPage implements Navigable {
 
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -222,6 +244,7 @@ public class SearchPage implements Navigable {
 
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -251,12 +274,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.includesItemsBetweenSetPriceRange(0, 50);
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -286,12 +306,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.includesItemsBetweenSetPriceRange(51, 100);
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -321,12 +338,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.includesItemsBetweenSetPriceRange(101, 150);
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -356,12 +370,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.includesItemsBetweenSetPriceRange(151, 200);
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -393,12 +404,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.isFoundInGivenCity(currentCustomer.getAddress().getCityName());
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -430,12 +438,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.isFoundInGivenDistrict(currentCustomer.getAddress().getDistrictName());
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -467,12 +472,9 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
                     restaurantFilter.isFoundInGivenStreet(currentCustomer.getAddress().getStreetName());
 
-                    if(restaurantFilter.getFilteredRestaurants().size() == 0) {
-                        restaurantFilter.resetFilter();
-                    }
-
                     subroot1OfSubroot3.getChildren().clear();
                     TextField searchResults = createUneditableTextField("Search results");
+                    searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
@@ -629,7 +631,8 @@ public class SearchPage implements Navigable {
                 if(textField.getText().equals(text)){
                     textField.setText("");   
                 }
-            }    
+            } 
+               
         });
 
         textField.setOnMouseExited(new EventHandler<MouseEvent>() {

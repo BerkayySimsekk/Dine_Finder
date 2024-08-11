@@ -168,6 +168,7 @@ public class EditMenu implements Navigable {
         
 
         TextField titleForItems = createUneditableTextField("Items");
+        titleForItems.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
         subroot1OfSubroot1.getChildren().add(titleForItems);
 
         for(int n = 0; n < currentRestaurantOwner.getMenu().getMenuAsArrayList().size(); n++) {

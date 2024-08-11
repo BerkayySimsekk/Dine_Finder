@@ -79,13 +79,13 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button hamburger = createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
+        Button burger = createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
 
-        hamburger.setOnAction(new EventHandler<ActionEvent>() {
+        burger.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                SearchPage.restaurantFilter.includesGivenItem("hamburger");
+                SearchPage.restaurantFilter.includesGivenItem("burger");
 
                 if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
                     SearchPage.restaurantFilter.resetFilter();
@@ -259,7 +259,7 @@ public class MainScreen implements Navigable {
 
         subroot2OfSubroot2 = new HBox(10);
         subroot2OfSubroot2.setAlignment(Pos.CENTER);
-        subroot2OfSubroot2.getChildren().addAll(hamburger, pizza, frenchFries, chicken, steak, salad, hotdog, pasta);
+        subroot2OfSubroot2.getChildren().addAll(burger, pizza, frenchFries, chicken, steak, salad, hotdog, pasta);
 
         subRoot2 = new VBox(10);
         subRoot2.setAlignment(Pos.CENTER);
