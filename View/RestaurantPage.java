@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -42,31 +40,31 @@ public class RestaurantPage implements Navigable {
         subroot1OfSubroot1.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot1.getViewportBounds().getWidth(), subroot1.viewportBoundsProperty()));
 
-        TextField titleForItems = createUneditableTextField("Menu");
+        TextField titleForItems = TextFieldCreater.createUneditableTextField("Menu", false, 0);
         titleForItems.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
         titleForItems.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
         subroot1OfSubroot1.getChildren().add(titleForItems);
 
         for(int n = 0; n < SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().size(); n++) {
-            TextField itemInfo = createUneditableTextField(SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().get(n).toString());
+            TextField itemInfo = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
             itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
             subroot1OfSubroot1.getChildren().add(itemInfo);
         }
 
-        TextField address = createUneditableTextField(SearchPage.clickedRestaurantPage.getAddress().toString());
+        TextField address = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getAddress().toString(), false, 0);
         address.setMinWidth(720);
 
-        TextField restaurantRating = createUneditableTextField("Rating: " + SearchPage.clickedRestaurantPage.calculateRating());
+        TextField restaurantRating = TextFieldCreater.createUneditableTextField("Rating: " + SearchPage.clickedRestaurantPage.calculateRating(), false, 0);
         restaurantRating.setMinWidth(720);
 
-        TextField description = createUneditableTextField(SearchPage.clickedRestaurantPage.getDescription());
+        TextField description = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getDescription(), false, 0);
         description.setMaxWidth(1450);
 
-        TextField givenRatingByCustomer = createEditableTextField("Enter a rating between 0 and 5");
+        TextField givenRatingByCustomer = TextFieldCreater.createEditableTextField("Enter a rating between 0 and 5", false, false, true, 0, 0, 720, true);
         givenRatingByCustomer.setMinWidth(720);
         givenRatingByCustomer.setVisible(false);
 
-        Button applyRating = createButton("Apply rating");
+        Button applyRating = ButtonCreater.createButton("Apply rating");
         applyRating.setVisible(false);
 
         applyRating.setOnAction(new EventHandler<ActionEvent>() {
@@ -82,6 +80,7 @@ public class RestaurantPage implements Navigable {
                         SearchPage.clickedRestaurantPage.getGivenRatings().add(Double.valueOf(givenRatingByCustomer.getText()));
     
                         restaurantRating.setText("Rating: " + SearchPage.clickedRestaurantPage.calculateRating());
+
                         givenRatingByCustomer.setText("Given rating: " + givenRatingByCustomer.getText());
                         givenRatingByCustomer.setEditable(false);
                         applyRating.setVisible(false);    
@@ -117,7 +116,7 @@ public class RestaurantPage implements Navigable {
             }
         }
 
-        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -152,108 +151,7 @@ public class RestaurantPage implements Navigable {
         root.getChildren().addAll(subroot4, title, empty3, description, subroot3, subroot1, givenRatingByCustomer, applyRating);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.setAlignment(Pos.TOP_CENTER);
-    }
-
-    public TextField createEditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setMaxWidth(720);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
-    }
-
-    public TextField createUneditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setEditable(false);
-
-        return textField;
-    }
-
-    public Button createButtonForStarsWithGivenImage(Image image, int height, int width) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(height);
-        imageView.setFitWidth(width);
-
-        Button button = createButtonForStars("");
-        button.setGraphic(imageView);
-
-        return button;
-    }
-
-    public Button createButtonForStars(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(30), new Insets(0))));
-
-        return button;
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
-    }
-
-    public Button createButtonWithGivenImage(Image image, int height, int width) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(height);
-        imageView.setFitWidth(width);
-
-        Button button = createButton("");
-        button.setGraphic(imageView);
-
-        return button;
-    }
+    }   
 
     @Override
     public void navigate() {

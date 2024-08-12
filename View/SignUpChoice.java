@@ -5,8 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -26,11 +24,7 @@ public class SignUpChoice implements Navigable {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);;
 
-        ImageView image = new ImageView(new Image("Images/BackButton.png"));
-        image.setFitHeight(35);
-        image.setFitWidth(35);
-
-        signUpAsCustomer = createButton("Sign up as customer");
+        signUpAsCustomer = ButtonCreater.createButton("Sign up as customer");
         signUpAsCustomer.setMinWidth(500);
 
         signUpAsCustomer.setOnAction(new EventHandler<ActionEvent>() {
@@ -41,7 +35,7 @@ public class SignUpChoice implements Navigable {
             }
         });
 
-        signUpAsRestaurantOwner = createButton("Sign up as restaurant owner");
+        signUpAsRestaurantOwner = ButtonCreater.createButton("Sign up as restaurant owner");
         signUpAsRestaurantOwner.setMinWidth(500);
 
         signUpAsRestaurantOwner.setOnAction(new EventHandler<ActionEvent>() {
@@ -52,8 +46,7 @@ public class SignUpChoice implements Navigable {
             }
         });
 
-        back = createButton("");
-        back.setGraphic(image);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -73,33 +66,6 @@ public class SignUpChoice implements Navigable {
         
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.getChildren().addAll(title, empty, signUpAsCustomer, signUpAsRestaurantOwner, back);  
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
     }
 
     public void navigate() {

@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -35,9 +33,9 @@ public class MainScreen implements Navigable {
 
     public MainScreen() {
         SearchPage.restaurantFilter = new RestaurantFilter();
-        SearchPage.searchFood = createEditableTextField("What food would you like to search for?");
+        SearchPage.searchFood = TextFieldCreater.createEditableTextField("What food would you like to search for?", true, true, false, 710, 65, 0, false);
 
-        Button profile = createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
+        Button profile = ButtonCreater.createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
 
         profile.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -55,14 +53,15 @@ public class MainScreen implements Navigable {
             
         });
 
-        TextField searchFood = createEditableTextField("What food would you like to search for?");
+        TextField searchFood = TextFieldCreater.createEditableTextField("What food would you like to search for?", true, true, false, 710, 65, 0, false);
 
-        Button search = createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
+        Button search = ButtonCreater.createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
 
         search.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
+                SearchPage.searchFood.setText(searchFood.getText());
                 SearchPage.restaurantFilter.includesGivenItem(searchFood.getText());
 
                 if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
@@ -70,7 +69,7 @@ public class MainScreen implements Navigable {
                     SearchPage.restaurantFilter.includesGivenItemType(searchFood.getText());
                 }
 
-                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0) {
+                if(SearchPage.restaurantFilter.getFilteredRestaurants().size() == 0 && searchFood.getText().equals("What food would you like to search for?")) {
                     SearchPage.restaurantFilter.resetFilter();
                 }
 
@@ -80,7 +79,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button burger = createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
+        Button burger = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
 
         burger.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -95,7 +94,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button pizza = createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
+        Button pizza = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
 
         pizza.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -110,7 +109,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button frenchFries = createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
+        Button frenchFries = ButtonCreater.createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
 
         frenchFries.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -125,7 +124,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button chicken = createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
+        Button chicken = ButtonCreater.createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
 
         chicken.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -140,7 +139,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button steak = createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
+        Button steak = ButtonCreater.createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
 
         steak.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -155,7 +154,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button salad = createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
+        Button salad = ButtonCreater.createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
 
         salad.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -170,7 +169,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button hotdog = createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
+        Button hotdog = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
 
         hotdog.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -185,7 +184,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button pasta = createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
+        Button pasta = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
 
         pasta.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -200,7 +199,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
         
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -250,77 +249,6 @@ public class MainScreen implements Navigable {
 
         root = new BorderPane(subRoot2, null, subroot1, null, subRoot3);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
-    }
-
-    public Button createButtonWithGivenImage(Image image, int height, int width) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(height);
-        imageView.setFitWidth(width);
-
-        Button button = createButton("");
-        button.setGraphic(imageView);
-
-        return button;
-    }
-    
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
-    }
-
-    public TextField createEditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER_LEFT);
-        textField.setMinWidth(710);
-        textField.setMinHeight(65);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
     }
 
     @Override

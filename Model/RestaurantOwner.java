@@ -6,7 +6,6 @@ public class RestaurantOwner extends User {
     private String description;
     private String restaurantName;
     private Menu menu;
-    private double rating;
     private ArrayList<Double> givenRatings;
     private ArrayList<User> ratingGivers;
     private Address address;
@@ -16,7 +15,6 @@ public class RestaurantOwner extends User {
         setAddress(address);
         setDescription(description);
         setRestaurantName(restaurantName);
-        rating = 0;
         menu = new Menu();
         givenRatings = new ArrayList<Double>();
         ratingGivers = new ArrayList<User>();
@@ -43,7 +41,7 @@ public class RestaurantOwner extends User {
     }
 
     public double getRating() {
-        return rating;
+        return calculateRating();
     }
 
     public String getDescription() {
@@ -60,10 +58,6 @@ public class RestaurantOwner extends User {
 
     public void setAddress(Address address) {
        this.address = address;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 
     public void setDescription(String description) {

@@ -12,8 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -48,15 +46,15 @@ public class CustomerProfile implements Navigable{
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
-        TextField username = createUneditableTextField("Username: " + currentCustomer.getUsername());
+        TextField username = TextFieldCreater.createUneditableTextField("Username: " + currentCustomer.getUsername(), true, 1450);
 
-        TextField email = createUneditableTextField("Email: " + currentCustomer.getEmail());
+        TextField email = TextFieldCreater.createUneditableTextField("Email: " + currentCustomer.getEmail(), true, 1450);
 
-        TextField password = createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()));
+        TextField password = TextFieldCreater.createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()), true, 1450);
 
-        TextField address = createUneditableTextField("Address: " + currentCustomer.getAddress().getCityName() + "," + currentCustomer.getAddress().getDistrictName() + "," + currentCustomer.getAddress().getStreetName());
+        TextField address = TextFieldCreater.createUneditableTextField("Address: " + currentCustomer.getAddress().getCityName() + "," + currentCustomer.getAddress().getDistrictName() + "," + currentCustomer.getAddress().getStreetName(), true, 1450);
 
-        applyUsername = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
+        applyUsername = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyUsername.setVisible(false);
 
         applyUsername.setOnAction(new EventHandler<ActionEvent>() {
@@ -104,7 +102,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyEmail = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
+        applyEmail = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyEmail.setVisible(false);
 
         applyEmail.setOnAction(new EventHandler<ActionEvent>() {
@@ -151,7 +149,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyPassword = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
+        applyPassword = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyPassword.setVisible(false);
 
         applyPassword.setOnAction(new EventHandler<ActionEvent>() {
@@ -175,7 +173,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        applyAddress = createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
+        applyAddress = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyAddress.setVisible(false);
 
         applyAddress.setOnAction(new EventHandler<ActionEvent>() {
@@ -226,7 +224,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editUsername = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
+        editUsername = ButtonCreater.createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editUsername.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -240,7 +238,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editEmail = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
+        editEmail = ButtonCreater.createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editEmail.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -254,7 +252,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editPassword = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
+        editPassword = ButtonCreater.createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editPassword.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -268,7 +266,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        editAddress = createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
+        editAddress = ButtonCreater.createButtonWithGivenImage(new Image("Images/Edit.png"), 35, 35);
 
         editAddress.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -293,7 +291,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -338,56 +336,6 @@ public class CustomerProfile implements Navigable{
         }
 
         return asterisks;
-    }
-
-    public Button createButtonWithGivenImage(Image image, int height, int width) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(height);
-        imageView.setFitWidth(width);
-
-        Button button = createButton("");
-        button.setGraphic(imageView);
-
-        return button;
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
-    }
-
-    public TextField createUneditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(1450);
-        textField.setEditable(false);
-
-        return textField;
     }
 
     @Override

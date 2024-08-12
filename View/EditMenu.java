@@ -12,8 +12,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -48,98 +46,113 @@ public class EditMenu implements Navigable {
         subroot1OfSubroot1.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot1.getViewportBounds().getWidth(), subroot1.viewportBoundsProperty()));
 
-        TextField name = createEditableTextField("Enter a name for the item");
+        TextField name = TextFieldCreater.createEditableTextField("Enter a name for the item", true, false, false, 460, 0, 0, true);
 
-        TextField type = createEditableTextField("Enter a type for the item");
+        TextField type = TextFieldCreater.createEditableTextField("Enter a type for the item", true, false, false, 460, 0, 0, true);
 
-        TextField price = createEditableTextField("Enter a price for the item");
+        TextField price = TextFieldCreater.createEditableTextField("Enter a price for the item", true, false, false, 460, 0, 0, true);
 
-        create = createButton("Create");
+        create = ButtonCreater.createButton("Create");
 
         create.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                Item item = new Item(name.getText(), type.getText(), Double.valueOf(price.getText()));
-                currentRestaurantOwner.getMenu().addItemToMenu(item);
+                try {
+                    Item item = new Item(name.getText(), type.getText(), Double.valueOf(price.getText()));
+                    currentRestaurantOwner.getMenu().addItemToMenu(item);
 
-                TextField itemInfo = createUneditableTextField(item.toString());
-                items.add(itemInfo);
-                
-                subroot1OfSubroot1.getChildren().add(itemInfo);
+                    TextField itemInfo = TextFieldCreater.createUneditableTextField(item.toString(), false, 0);
+                    itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
+                    items.add(itemInfo);
+                    
+                    subroot1OfSubroot1.getChildren().add(itemInfo);
 
-                name.setText("Created successfully");
-                type.setText("Created successfully");
-                price.setText("Created successfully");
+                    name.setText("Created successfully");
+                    type.setText("Created successfully");
+                    price.setText("Created successfully");
 
-                Timer myTimer = new Timer();
-                myTimer.schedule(new TimerTask(){
+                    Timer myTimer = new Timer();
+                    myTimer.schedule(new TimerTask(){
 
-                    @Override
-                    public void run() {
-                        name.setText("Enter a name for the item");
-                        type.setText("Enter a type for the item");
-                        price.setText("Enter a price for the item");
-                    }
+                        @Override
+                        public void run() {
+                            name.setText("Enter a name for the item");
+                            type.setText("Enter a type for the item");
+                            price.setText("Enter a price for the item");
+                        }
 
-                }, 1000);
+                    }, 1000);
+                }
+                catch (NumberFormatException exception) {
+                    name.setText("Enter a name for the item");
+                    type.setText("Enter a type for the item");
+                    price.setText("Enter a price for the item");
+                }
             }  
         });
 
-        delete = createButton("Delete");
+        delete = ButtonCreater.createButton("Delete");
 
         delete.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent event) {
-                boolean isFound = false;
+                try {
+                    boolean isFound = false;
 
-                Item item = new Item(name.getText(), type.getText(), Double.valueOf(price.getText()));
-                
-                for(int n = 0; n < items.size(); n++) {
-                    if(item.toString().equals(items.get(n).getText())) {
-                        isFound = true;
+                    Item item = new Item(name.getText(), type.getText(), Double.valueOf(price.getText()));
+                    
+                    for(int n = 0; n < items.size(); n++) {
+                        if(item.toString().equals(items.get(n).getText())) {
+                            isFound = true;
 
-                        currentRestaurantOwner.getMenu().removeItemFromMenu(item);
-                        subroot1OfSubroot1.getChildren().remove(items.get(n));
-                        items.remove(n);
-                        n--;
+                            currentRestaurantOwner.getMenu().removeItemFromMenu(item);
+                            subroot1OfSubroot1.getChildren().remove(items.get(n));
+                            items.remove(n);
+                            n--;
+                        }
+                    }
+
+                    if(isFound) {
+                        name.setText("Deleted successfully");
+                        type.setText("Deleted successfully");
+                        price.setText("Deleted successfully");
+
+                        Timer myTimer = new Timer();
+                        myTimer.schedule(new TimerTask(){
+
+                        @Override
+                        public void run() {
+                            name.setText("Enter a name for the item");
+                            type.setText("Enter a type for the item");
+                            price.setText("Enter a price for the item");
+                        }
+
+                        }, 1000);
+                    }
+                    else {
+                        name.setText("Item not found");
+                        type.setText("Item not found");
+                        price.setText("Item not found");
+
+                        Timer myTimer = new Timer();
+                        myTimer.schedule(new TimerTask(){
+
+                        @Override
+                        public void run() {
+                            name.setText("Enter a name for the item");
+                            type.setText("Enter a type for the item");
+                            price.setText("Enter a price for the item");
+                        }
+
+                        }, 1000);
                     }
                 }
-
-                if(isFound) {
-                    name.setText("Deleted successfully");
-                    type.setText("Deleted successfully");
-                    price.setText("Deleted successfully");
-
-                    Timer myTimer = new Timer();
-                    myTimer.schedule(new TimerTask(){
-
-                    @Override
-                    public void run() {
-                        name.setText("Enter a name for the item");
-                        type.setText("Enter a type for the item");
-                        price.setText("Enter a price for the item");
-                    }
-
-                    }, 1000);
-                }
-                else {
-                    name.setText("Item not found");
-                    type.setText("Item not found");
-                    price.setText("Item not found");
-
-                    Timer myTimer = new Timer();
-                    myTimer.schedule(new TimerTask(){
-
-                    @Override
-                    public void run() {
-                        name.setText("Enter a name for the item");
-                        type.setText("Enter a type for the item");
-                        price.setText("Enter a price for the item");
-                    }
-
-                    }, 1000);
+                catch (NumberFormatException exception) {
+                    name.setText("Enter a name for the item");
+                    type.setText("Enter a type for the item");
+                    price.setText("Enter a price for the item");
                 }
             }
             
@@ -153,7 +166,7 @@ public class EditMenu implements Navigable {
         subroot3.setAlignment(Pos.CENTER);
         subroot3.getChildren().addAll(create, delete);
 
-        Button back = createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -167,12 +180,14 @@ public class EditMenu implements Navigable {
 
         
 
-        TextField titleForItems = createUneditableTextField("Items");
+        TextField titleForItems = TextFieldCreater.createUneditableTextField("Items", false, 0);
         titleForItems.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
+        titleForItems.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
         subroot1OfSubroot1.getChildren().add(titleForItems);
 
         for(int n = 0; n < currentRestaurantOwner.getMenu().getMenuAsArrayList().size(); n++) {
-            TextField itemInfo = createUneditableTextField(currentRestaurantOwner.getMenu().getMenuAsArrayList().get(n).toString());
+            TextField itemInfo = TextFieldCreater.createUneditableTextField(currentRestaurantOwner.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
+            itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
             items.add(itemInfo);
 
             subroot1OfSubroot1.getChildren().add(itemInfo);
@@ -189,87 +204,6 @@ public class EditMenu implements Navigable {
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.setAlignment(Pos.CENTER);
         root.getChildren().addAll(title, empty, subroot1, empty2, subroot2, subroot3, back);
-    }
-
-    public TextField createUneditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setEditable(false);
-
-        return textField;
-    }
-
-    public TextField createEditableTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(460);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
-    }
-
-    public Button createButtonWithGivenImage(Image image, int height, int width) {
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(height);
-        imageView.setFitWidth(width);
-
-        Button button = createButton("");
-        button.setGraphic(imageView);
-
-        return button;
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
     }
 
     @Override

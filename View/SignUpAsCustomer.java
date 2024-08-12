@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -29,21 +28,21 @@ public class SignUpAsCustomer implements Navigable {
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
-        TextField username = createTextField("Enter your username");
+        TextField username = TextFieldCreater.createEditableTextField("Enter your username", true, false, true, 650, 0, 650, true);
 
-        TextField email = createTextField("Enter your email");
+        TextField email = TextFieldCreater.createEditableTextField("Enter your email", true, false, true, 650, 0, 650, true);
 
-        TextField password = createTextField("Enter your password");
+        TextField password = TextFieldCreater.createEditableTextField("Enter your password", true, false, true, 650, 0, 650, true);
 
-        TextField passwordAgain = createTextField("Enter your password again");
+        TextField passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, true, 650, 0, 650, true);
 
-        TextField city = createTextField("Enter the city of your address");
+        TextField city = TextFieldCreater.createEditableTextField("Enter the city of your address", true, false, true, 650, 0, 650, true);
 
-        TextField district = createTextField("Enter the district of your address");
+        TextField district = TextFieldCreater.createEditableTextField("Enter the district of your address", true, false, true, 650, 0, 650, true);
 
-        TextField street = createTextField("Enter the street of your address");
+        TextField street = TextFieldCreater.createEditableTextField("Enter the street of your address", true, false, true, 650, 0, 650, true);
 
-        Button signUp = createButton("Sign up");
+        Button signUp = ButtonCreater.createButton("Sign up");
 
         signUp.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -86,12 +85,7 @@ public class SignUpAsCustomer implements Navigable {
 
         });
 
-        ImageView image = new ImageView(new Image("Images/BackButton.png"));
-        image.setFitHeight(35);
-        image.setFitWidth(35);
-
-        Button back = createButton("");
-        back.setGraphic(image);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -182,66 +176,6 @@ public class SignUpAsCustomer implements Navigable {
         subroot3.getChildren().addAll(city, district);
 
         root.getChildren().addAll(signUpAsCustomer, empty, subroot1, subroot2, subroot3, street, signUp, back);
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
-    }
-
-    public TextField createTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(650);
-        textField.setMaxWidth(650);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
     }
 
     public void navigate() {

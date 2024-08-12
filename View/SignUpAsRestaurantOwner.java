@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -30,31 +29,25 @@ public class SignUpAsRestaurantOwner implements Navigable {
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
-        TextField username = createTextField("Enter your username");
+        TextField username = TextFieldCreater.createEditableTextField("Enter your username", true, false, false, 710, 0, 0, true);
 
-        TextField email = createTextField("Enter your email");
+        TextField email = TextFieldCreater.createEditableTextField("Enter your email", true, false, false, 710, 0, 0, true);
 
-        TextField password = createTextField("Enter your password");
+        TextField password = TextFieldCreater.createEditableTextField("Enter your password", true, false, false, 710, 0, 0, true);
 
-        TextField passwordAgain = createTextField("Enter your password again");
+        TextField passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, false, 710, 0, 0, true);
 
-        TextField restaurantName = createTextField("Enter the name of your restaurant");
+        TextField restaurantName = TextFieldCreater.createEditableTextField("Enter the name of your restaurant", true, false, false, 710, 0, 0, true);
 
-        TextField city = createTextField("Enter the city your restaurant is found at");
+        TextField city = TextFieldCreater.createEditableTextField("Enter the city your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField district = createTextField("Enter the district your restaurant is found at");
+        TextField district = TextFieldCreater.createEditableTextField("Enter the district your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField street = createTextField("Enter the street your restaurant is found at");
+        TextField street = TextFieldCreater.createEditableTextField("Enter the street your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField description = createTextField("Enter a short description for your restaurant");
-        description.setMaxWidth(1450);
+        TextField description = TextFieldCreater.createEditableTextField("Enter a short description for your restaurant", false, false, true, 0, 0, 1450, true);
 
-        ImageView image = new ImageView(new Image("Images/BackButton.png"));
-        image.setFitHeight(35);
-        image.setFitWidth(35);
-
-        Button back = createButton("");
-        back.setGraphic(image);
+        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -66,7 +59,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
             
         });
 
-        Button signUp = createButton("Sign up");
+        Button signUp = ButtonCreater.createButton("Sign up");
 
         signUp.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -196,65 +189,6 @@ public class SignUpAsRestaurantOwner implements Navigable {
         subRoot4.getChildren().addAll(district, street);
 
         root.getChildren().addAll(signUpAsRestaurantOwner, empty, subroot1, subRoot2, subRoot3, subRoot4, description, signUp, back);
-    }
-
-    public Button createButton(String text) {
-        Button button = new Button(text);
-        button.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        button.setTextFill(Color.WHITE);
-        button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-
-        button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.VIOLET, new CornerRadii(30), new Insets(0))));
-            }
-            
-        });
-
-        button.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                button.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));   
-            }
-            
-        });
-
-        return button;
-    }
-
-    public TextField createTextField(String text) {
-        TextField textField = new TextField(text);
-        textField.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 35));
-        textField.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(30), new Insets(0))));
-        textField.setStyle("-fx-text-inner-color: white");
-        textField.setAlignment(Pos.CENTER);
-        textField.setMinWidth(710);
-
-        textField.setOnMouseEntered(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals(text)){
-                    textField.setText("");   
-                }
-            }    
-        });
-
-        textField.setOnMouseExited(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent event) {
-                if(textField.getText().equals("")) {
-                    textField.setText(text); 
-                } 
-            }
-            
-        });
-
-        return textField;
     }
 
     public void navigate() {
