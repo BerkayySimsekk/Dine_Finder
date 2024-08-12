@@ -20,34 +20,47 @@ import javafx.scene.text.FontWeight;
 public class SignUpAsRestaurantOwner implements Navigable {
     VBox root;
     HBox subroot1;
-    HBox subRoot2;
-    HBox subRoot3;
-    HBox subRoot4;
+    HBox subroot2;
+    HBox subroot3;
+    HBox subroot4;
+    TextField username;
+    TextField email;
+    TextField password;
+    TextField passwordAgain;
+    TextField restaurantName;
+    TextField city;
+    TextField district;
+    TextField street;
+    TextField description;
+    Button back;
+    Button signUp;
+    Label signUpAsRestaurantOwner;
+    Label empty;
 
     public SignUpAsRestaurantOwner() {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
-        TextField username = TextFieldCreater.createEditableTextField("Enter your username", true, false, false, 710, 0, 0, true);
+        username = TextFieldCreater.createEditableTextField("Enter your username", true, false, false, 710, 0, 0, true);
 
-        TextField email = TextFieldCreater.createEditableTextField("Enter your email", true, false, false, 710, 0, 0, true);
+        email = TextFieldCreater.createEditableTextField("Enter your email", true, false, false, 710, 0, 0, true);
 
-        TextField password = TextFieldCreater.createEditableTextField("Enter your password", true, false, false, 710, 0, 0, true);
+        password = TextFieldCreater.createEditableTextField("Enter your password", true, false, false, 710, 0, 0, true);
 
-        TextField passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, false, 710, 0, 0, true);
+        passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, false, 710, 0, 0, true);
 
-        TextField restaurantName = TextFieldCreater.createEditableTextField("Enter the name of your restaurant", true, false, false, 710, 0, 0, true);
+        restaurantName = TextFieldCreater.createEditableTextField("Enter the name of your restaurant", true, false, false, 710, 0, 0, true);
 
-        TextField city = TextFieldCreater.createEditableTextField("Enter the city your restaurant is found at", true, false, false, 710, 0, 0, true);
+        city = TextFieldCreater.createEditableTextField("Enter the city your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField district = TextFieldCreater.createEditableTextField("Enter the district your restaurant is found at", true, false, false, 710, 0, 0, true);
+        district = TextFieldCreater.createEditableTextField("Enter the district your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField street = TextFieldCreater.createEditableTextField("Enter the street your restaurant is found at", true, false, false, 710, 0, 0, true);
+        street = TextFieldCreater.createEditableTextField("Enter the street your restaurant is found at", true, false, false, 710, 0, 0, true);
 
-        TextField description = TextFieldCreater.createEditableTextField("Enter a short description for your restaurant", false, false, true, 0, 0, 1450, true);
+        description = TextFieldCreater.createEditableTextField("Enter a short description for your restaurant", false, false, true, 0, 0, 1450, true);
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -59,7 +72,7 @@ public class SignUpAsRestaurantOwner implements Navigable {
             
         });
 
-        Button signUp = ButtonCreater.createButton("Sign up");
+        signUp = ButtonCreater.createButton("Sign up");
 
         signUp.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -162,33 +175,33 @@ public class SignUpAsRestaurantOwner implements Navigable {
 
         });
 
-        Label signUpAsRestaurantOwner = new Label("Sign up as restaurant owner");
+        signUpAsRestaurantOwner = new Label("Sign up as restaurant owner");
         signUpAsRestaurantOwner.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         signUpAsRestaurantOwner.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
+        empty = new Label();
 
         subroot1 = new HBox(30);
         subroot1.setAlignment(Pos.CENTER);
 
         subroot1.getChildren().addAll(username, email);
 
-        subRoot2 = new HBox(30);
-        subRoot2.setAlignment(Pos.CENTER);
+        subroot2 = new HBox(30);
+        subroot2.setAlignment(Pos.CENTER);
 
-        subRoot2.getChildren().addAll(password, passwordAgain);
+        subroot2.getChildren().addAll(password, passwordAgain);
 
-        subRoot3 = new HBox(30);
-        subRoot3.setAlignment(Pos.CENTER);
+        subroot3 = new HBox(30);
+        subroot3.setAlignment(Pos.CENTER);
 
-        subRoot3.getChildren().addAll(restaurantName, city);
+        subroot3.getChildren().addAll(restaurantName, city);
 
-        subRoot4 = new HBox(30);
-        subRoot4.setAlignment(Pos.CENTER);
+        subroot4 = new HBox(30);
+        subroot4.setAlignment(Pos.CENTER);
 
-        subRoot4.getChildren().addAll(district, street);
+        subroot4.getChildren().addAll(district, street);
 
-        root.getChildren().addAll(signUpAsRestaurantOwner, empty, subroot1, subRoot2, subRoot3, subRoot4, description, signUp, back);
+        root.getChildren().addAll(signUpAsRestaurantOwner, empty, subroot1, subroot2, subroot3, subroot4, description, signUp, back);
     }
 
     public void navigate() {

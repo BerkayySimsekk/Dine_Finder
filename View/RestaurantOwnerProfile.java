@@ -44,6 +44,16 @@ public class RestaurantOwnerProfile implements Navigable{
     Button editRestaurantName;
     Button editAddress;
     Button editDescription;
+    Button editMenu;
+    Button back;
+    TextField username;
+    TextField email;
+    TextField password;
+    TextField restaurantName;
+    TextField address;
+    TextField description;
+    Label title;
+    Label empty;
 
     public RestaurantOwnerProfile() {
         RestaurantOwner currentRestaurantOwner = (RestaurantOwner)DineFinderApplication.currentUser;
@@ -52,17 +62,17 @@ public class RestaurantOwnerProfile implements Navigable{
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
-        TextField username = TextFieldCreater.createUneditableTextField("Username: " + currentRestaurantOwner.getUsername(), true, 1450);
+        username = TextFieldCreater.createUneditableTextField("Username: " + currentRestaurantOwner.getUsername(), true, 1450);
 
-        TextField email = TextFieldCreater.createUneditableTextField("Email: " + currentRestaurantOwner.getEmail(), true, 1450);
+        email = TextFieldCreater.createUneditableTextField("Email: " + currentRestaurantOwner.getEmail(), true, 1450);
 
-        TextField password = TextFieldCreater.createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentRestaurantOwner.getPassword()), true, 1450);
+        password = TextFieldCreater.createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentRestaurantOwner.getPassword()), true, 1450);
 
-        TextField restaurantName = TextFieldCreater.createUneditableTextField("Restaurant name: " + currentRestaurantOwner.getRestaurantName(), true, 1450);
+        restaurantName = TextFieldCreater.createUneditableTextField("Restaurant name: " + currentRestaurantOwner.getRestaurantName(), true, 1450);
 
-        TextField address = TextFieldCreater.createUneditableTextField("Address: " + currentRestaurantOwner.getAddress().getCityName() + "," + currentRestaurantOwner.getAddress().getDistrictName() + "," + currentRestaurantOwner.getAddress().getStreetName(), true, 1450);
+        address = TextFieldCreater.createUneditableTextField("Address: " + currentRestaurantOwner.getAddress().getCityName() + "," + currentRestaurantOwner.getAddress().getDistrictName() + "," + currentRestaurantOwner.getAddress().getStreetName(), true, 1450);
 
-        TextField description = TextFieldCreater.createUneditableTextField("Description: " + currentRestaurantOwner.getDescription(), true, 1450);
+        description = TextFieldCreater.createUneditableTextField("Description: " + currentRestaurantOwner.getDescription(), true, 1450);
 
         applyRestaurantName = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyRestaurantName.setVisible(false);
@@ -381,7 +391,7 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        Button editMenu = ButtonCreater.createButton("Edit menu");
+        editMenu = ButtonCreater.createButton("Edit menu");
 
         editMenu.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -393,7 +403,7 @@ public class RestaurantOwnerProfile implements Navigable{
 
         });
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -405,11 +415,11 @@ public class RestaurantOwnerProfile implements Navigable{
             
         });
 
-        Label title = new Label("Your Profile");
+        title = new Label("Your Profile");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
+        empty = new Label();
 
         subroot1 = new HBox(10);
         subroot1.setAlignment(Pos.CENTER);

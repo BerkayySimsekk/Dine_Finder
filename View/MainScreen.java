@@ -19,23 +19,38 @@ import javafx.scene.text.FontWeight;
 
 public class MainScreen implements Navigable {
     BorderPane root;
-
     VBox subroot1;
+    VBox subroot2;
+    VBox subroot3;
     HBox subroot1OfSubroot1;
-
-    VBox subRoot2;
     HBox subroot1OfSubroot2;
     HBox subroot2OfSubroot2;
-
-    VBox subRoot3;
     HBox subroot1OfSubroot3;
-
+    Button profile;
+    Button search;
+    Button burger;
+    Button pizza;
+    Button frenchFries;
+    Button chicken;
+    Button steak;
+    Button salad;
+    Button hotdog;
+    Button pasta;
+    Button back;
+    TextField searchFood;
+    Label title;
+    Label empty;
+    Label empty2;
+    Label empty3;
+    Label empty4;
+    Label empty5;
+    Label empty6;
 
     public MainScreen() {
         SearchPage.restaurantFilter = new RestaurantFilter();
         SearchPage.searchFood = TextFieldCreater.createEditableTextField("What food would you like to search for?", true, true, false, 710, 65, 0, false);
 
-        Button profile = ButtonCreater.createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
+        profile = ButtonCreater.createButtonWithGivenImage(new Image("Images/ProfileIcon.png"), 70, 70);
 
         profile.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -53,9 +68,9 @@ public class MainScreen implements Navigable {
             
         });
 
-        TextField searchFood = TextFieldCreater.createEditableTextField("What food would you like to search for?", true, true, false, 710, 65, 0, false);
+        searchFood = TextFieldCreater.createEditableTextField("What food would you like to search for?", true, true, false, 710, 65, 0, false);
 
-        Button search = ButtonCreater.createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
+        search = ButtonCreater.createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 50, 50);
 
         search.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -79,7 +94,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button burger = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
+        burger = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hamburger.png"), 50, 50);
 
         burger.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -94,7 +109,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button pizza = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
+        pizza = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pizza.png"), 50, 50);
 
         pizza.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -109,7 +124,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button frenchFries = ButtonCreater.createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
+        frenchFries = ButtonCreater.createButtonWithGivenImage(new Image("Images/FrenchFries.png"), 50, 50);
 
         frenchFries.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -124,7 +139,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button chicken = ButtonCreater.createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
+        chicken = ButtonCreater.createButtonWithGivenImage(new Image("Images/Chicken.png"), 50, 50);
 
         chicken.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -139,7 +154,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button steak = ButtonCreater.createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
+        steak = ButtonCreater.createButtonWithGivenImage(new Image("Images/Steak.png"), 50, 50);
 
         steak.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -154,7 +169,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button salad = ButtonCreater.createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
+        salad = ButtonCreater.createButtonWithGivenImage(new Image("Images/Salad.png"), 50, 50);
 
         salad.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -169,7 +184,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button hotdog = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
+        hotdog = ButtonCreater.createButtonWithGivenImage(new Image("Images/Hotdog.png"), 50, 50);
 
         hotdog.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -184,7 +199,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button pasta = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
+        pasta = ButtonCreater.createButtonWithGivenImage(new Image("Images/Pasta.png"), 50, 50);
 
         pasta.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -199,7 +214,7 @@ public class MainScreen implements Navigable {
             
         });
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
         
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -212,16 +227,16 @@ public class MainScreen implements Navigable {
             
         });
 
-        Label title = new Label("What would you like today?");
+        title = new Label("What would you like today?");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
-        Label empty2 = new Label();
-        Label empty3 = new Label();
-        Label empty4 = new Label();
-        Label empty5 = new Label();
-        Label empty6 = new Label();
+        empty = new Label();
+        empty2 = new Label();
+        empty3 = new Label();
+        empty4 = new Label();
+        empty5 = new Label();
+        empty6 = new Label();
 
         subroot1OfSubroot1 = new HBox(30);
         subroot1OfSubroot1.getChildren().addAll(profile, empty);
@@ -237,17 +252,17 @@ public class MainScreen implements Navigable {
         subroot2OfSubroot2.setAlignment(Pos.CENTER);
         subroot2OfSubroot2.getChildren().addAll(burger, pizza, frenchFries, chicken, steak, salad, hotdog, pasta);
 
-        subRoot2 = new VBox(10);
-        subRoot2.setAlignment(Pos.CENTER);
-        subRoot2.getChildren().addAll(title, empty3, empty4, subroot1OfSubroot2, subroot2OfSubroot2);
+        subroot2 = new VBox(10);
+        subroot2.setAlignment(Pos.CENTER);
+        subroot2.getChildren().addAll(title, empty3, empty4, subroot1OfSubroot2, subroot2OfSubroot2);
 
         subroot1OfSubroot3 = new HBox(30);
         subroot1OfSubroot3.getChildren().addAll(empty5, back);
 
-        subRoot3 = new VBox(10);
-        subRoot3.getChildren().addAll(empty6, subroot1OfSubroot3);
+        subroot3 = new VBox(10);
+        subroot3.getChildren().addAll(empty6, subroot1OfSubroot3);
 
-        root = new BorderPane(subRoot2, null, subroot1, null, subRoot3);
+        root = new BorderPane(subroot2, null, subroot1, null, subroot3);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
     }
 

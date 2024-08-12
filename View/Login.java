@@ -17,16 +17,19 @@ import javafx.scene.text.FontWeight;
 public class Login implements Navigable{
     VBox root;
     Button login;
-    String hiddenPassword;
-    String visiblePassword;
+    Button haveNotSignedUpYet;
+    TextField usernameOrEmail;
+    TextField password;
+    Label title;
+    Label empty;
 
     public Login() {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
-        TextField usernameOrEmail = TextFieldCreater.createEditableTextField("Enter your username or email", false, false, true, 0, 0, 650, true);
-        TextField password = TextFieldCreater.createEditableTextField("Enter your password", false, false, true, 0, 0, 650, true);
+        usernameOrEmail = TextFieldCreater.createEditableTextField("Enter your username or email", false, false, true, 0, 0, 650, true);
+        password = TextFieldCreater.createEditableTextField("Enter your password", false, false, true, 0, 0, 650, true);
 
         login = ButtonCreater.createButton("Login");
 
@@ -56,7 +59,7 @@ public class Login implements Navigable{
 
         });
 
-        Button haveNotSignedUpYet = ButtonCreater.createButton("You haven't signed up yet?");
+        haveNotSignedUpYet = ButtonCreater.createButton("You haven't signed up yet?");
 
         haveNotSignedUpYet.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -68,9 +71,9 @@ public class Login implements Navigable{
 
         });
 
-        Label empty = new Label();
+        empty = new Label();
 
-        Label title = new Label("Welcome to Dine Finder!");
+        title = new Label("Welcome to Dine Finder!");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
         

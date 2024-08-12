@@ -21,13 +21,24 @@ import javafx.scene.text.FontWeight;
 
 public class RestaurantPage implements Navigable {
     VBox root;
-    VBox subroot1OfSubroot1;
     ScrollPane subroot1;
     HBox subroot2;
     HBox subroot3;
     VBox subroot4;
+    VBox subroot1OfSubroot1;
     HBox subroot1OfSubroot4;
-
+    TextField titleForItems;
+    TextField itemInfo;
+    TextField address;
+    TextField restaurantRating;
+    TextField description;
+    TextField givenRatingByCustomer;
+    Button applyRating;
+    Button back;
+    Label title;
+    Label empty;
+    Label empty2;
+    Label empty3;
 
     public RestaurantPage() {
         subroot1OfSubroot1 = new VBox();
@@ -40,31 +51,31 @@ public class RestaurantPage implements Navigable {
         subroot1OfSubroot1.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot1.getViewportBounds().getWidth(), subroot1.viewportBoundsProperty()));
 
-        TextField titleForItems = TextFieldCreater.createUneditableTextField("Menu", false, 0);
+        titleForItems = TextFieldCreater.createUneditableTextField("Menu", false, 0);
         titleForItems.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
         titleForItems.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
         subroot1OfSubroot1.getChildren().add(titleForItems);
 
         for(int n = 0; n < SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().size(); n++) {
-            TextField itemInfo = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
+            itemInfo = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
             itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
             subroot1OfSubroot1.getChildren().add(itemInfo);
         }
 
-        TextField address = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getAddress().toString(), false, 0);
+        address = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getAddress().toString(), false, 0);
         address.setMinWidth(720);
 
-        TextField restaurantRating = TextFieldCreater.createUneditableTextField("Rating: " + SearchPage.clickedRestaurantPage.calculateRating(), false, 0);
+        restaurantRating = TextFieldCreater.createUneditableTextField("Rating: " + SearchPage.clickedRestaurantPage.calculateRating(), false, 0);
         restaurantRating.setMinWidth(720);
 
-        TextField description = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getDescription(), false, 0);
+        description = TextFieldCreater.createUneditableTextField(SearchPage.clickedRestaurantPage.getDescription(), false, 0);
         description.setMaxWidth(1450);
 
-        TextField givenRatingByCustomer = TextFieldCreater.createEditableTextField("Enter a rating between 0 and 5", false, false, true, 0, 0, 720, true);
+        givenRatingByCustomer = TextFieldCreater.createEditableTextField("Enter a rating between 0 and 5", false, false, true, 0, 0, 720, true);
         givenRatingByCustomer.setMinWidth(720);
         givenRatingByCustomer.setVisible(false);
 
-        Button applyRating = ButtonCreater.createButton("Apply rating");
+        applyRating = ButtonCreater.createButton("Apply rating");
         applyRating.setVisible(false);
 
         applyRating.setOnAction(new EventHandler<ActionEvent>() {
@@ -116,7 +127,7 @@ public class RestaurantPage implements Navigable {
             }
         }
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -128,13 +139,13 @@ public class RestaurantPage implements Navigable {
             
         });
 
-        Label title = new Label(SearchPage.clickedRestaurantPage.getRestaurantName());
+        title = new Label(SearchPage.clickedRestaurantPage.getRestaurantName());
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
-        Label empty2 = new Label();
-        Label empty3 = new Label();
+        empty = new Label();
+        empty2 = new Label();
+        empty3 = new Label();
 
         subroot1OfSubroot4 = new HBox(30);
         subroot1OfSubroot4.getChildren().addAll(empty, back);

@@ -22,27 +22,38 @@ public class SignUpAsCustomer implements Navigable {
     HBox subroot1;
     HBox subroot2;
     HBox subroot3;
+    TextField username;
+    TextField email;
+    TextField password;
+    TextField passwordAgain;
+    TextField city;
+    TextField district;
+    TextField street;
+    Button signUp;
+    Button back;
+    Label signUpAsCustomer;
+    Label empty;
 
     public SignUpAsCustomer() {
         root = new VBox(30);
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
-        TextField username = TextFieldCreater.createEditableTextField("Enter your username", true, false, true, 650, 0, 650, true);
+        username = TextFieldCreater.createEditableTextField("Enter your username", true, false, true, 650, 0, 650, true);
 
-        TextField email = TextFieldCreater.createEditableTextField("Enter your email", true, false, true, 650, 0, 650, true);
+        email = TextFieldCreater.createEditableTextField("Enter your email", true, false, true, 650, 0, 650, true);
 
-        TextField password = TextFieldCreater.createEditableTextField("Enter your password", true, false, true, 650, 0, 650, true);
+        password = TextFieldCreater.createEditableTextField("Enter your password", true, false, true, 650, 0, 650, true);
 
-        TextField passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, true, 650, 0, 650, true);
+        passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, true, 650, 0, 650, true);
 
-        TextField city = TextFieldCreater.createEditableTextField("Enter the city of your address", true, false, true, 650, 0, 650, true);
+        city = TextFieldCreater.createEditableTextField("Enter the city of your address", true, false, true, 650, 0, 650, true);
 
-        TextField district = TextFieldCreater.createEditableTextField("Enter the district of your address", true, false, true, 650, 0, 650, true);
+        district = TextFieldCreater.createEditableTextField("Enter the district of your address", true, false, true, 650, 0, 650, true);
 
-        TextField street = TextFieldCreater.createEditableTextField("Enter the street of your address", true, false, true, 650, 0, 650, true);
+        street = TextFieldCreater.createEditableTextField("Enter the street of your address", true, false, true, 650, 0, 650, true);
 
-        Button signUp = ButtonCreater.createButton("Sign up");
+        signUp = ButtonCreater.createButton("Sign up");
 
         signUp.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -85,7 +96,7 @@ public class SignUpAsCustomer implements Navigable {
 
         });
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -157,11 +168,11 @@ public class SignUpAsCustomer implements Navigable {
 
         });
 
-        Label signUpAsCustomer = new Label("Sign up as customer");
+        signUpAsCustomer = new Label("Sign up as customer");
         signUpAsCustomer.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         signUpAsCustomer.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
+        empty = new Label();
 
         subroot1 = new HBox(30);
         subroot1.setAlignment(Pos.CENTER);

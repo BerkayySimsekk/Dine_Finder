@@ -31,9 +31,19 @@ public class SearchPage implements Navigable {
     VBox subroot1;
     HBox subroot2;
     ScrollPane subroot3;
-    VBox subroot1OfSubroot3;
     HBox subroot1OfSubroot1;
     HBox subroot1OfSubroot2;
+    VBox subroot1OfSubroot3;
+    Button restaurantName;
+    Button search;
+    Button back;
+    Button filterIcon;
+    Label empty;
+    Label empty2;
+    Label empty3;
+    Label empty4;
+    ComboBox<String> filter;
+    TextField searchResults;
 
     public SearchPage() {
         subroot1OfSubroot3 = new VBox();
@@ -47,14 +57,14 @@ public class SearchPage implements Navigable {
         subroot1OfSubroot3.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot3.getViewportBounds().getWidth(), subroot3.viewportBoundsProperty()));
 
-        TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+        searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
         searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
         searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
 
         subroot1OfSubroot3.getChildren().add(searchResults);
 
         for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-            Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+            restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
             subroot1OfSubroot3.getChildren().add(restaurantName);
 
             restaurantName.setOnAction(new EventHandler<ActionEvent>() {
@@ -74,7 +84,7 @@ public class SearchPage implements Navigable {
             });
         }
 
-        Button search = ButtonCreater.createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 35, 35);
+        search = ButtonCreater.createButtonWithGivenImage(new Image("Images/SearchIcon.png"), 35, 35);
 
         search.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -89,12 +99,13 @@ public class SearchPage implements Navigable {
                 }
 
                 subroot1OfSubroot3.getChildren().clear();
-                TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                 searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                 subroot1OfSubroot3.getChildren().add(searchResults);
 
                 for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                    Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                    restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                     restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -118,7 +129,7 @@ public class SearchPage implements Navigable {
 
         });
 
-        ComboBox<String> filter = new ComboBox<String>();
+        filter = new ComboBox<String>();
         filter.setMinHeight(35);
         filter.setBackground(new Background(new BackgroundFill(Color.HOTPINK, new CornerRadii(0), new Insets(0))));
 
@@ -146,12 +157,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.resetFilter();
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false , 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false , 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -177,12 +189,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.sortByAlphabeticalOrderOfRestaurantName();
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -208,12 +221,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.sortByRating();
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -239,12 +253,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.sortByPopularity();
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -271,12 +286,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.includesItemsBetweenSetPriceRange(0, 50);
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -303,12 +319,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.includesItemsBetweenSetPriceRange(51, 100);
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -335,12 +352,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.includesItemsBetweenSetPriceRange(101, 150);
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                   searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                   searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -367,12 +385,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.includesItemsBetweenSetPriceRange(151, 200);
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -401,12 +420,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.isFoundInGivenCity(currentCustomer.getAddress().getCityName());
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -435,12 +455,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.isFoundInGivenDistrict(currentCustomer.getAddress().getDistrictName());
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -469,12 +490,13 @@ public class SearchPage implements Navigable {
                     restaurantFilter.isFoundInGivenStreet(currentCustomer.getAddress().getStreetName());
 
                     subroot1OfSubroot3.getChildren().clear();
-                    TextField searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults = TextFieldCreater.createUneditableTextField("Search results", false, 0);
+                    searchResults.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     searchResults.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
                     subroot1OfSubroot3.getChildren().add(searchResults);
 
                     for(int n = 0; n < restaurantFilter.getFilteredRestaurants().size(); n++) {
-                        Button restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
+                        restaurantName = ButtonCreater.createButtonForRestaurants(restaurantFilter.getFilteredRestaurants().get(n).getRestaurantName());
 
                         restaurantName.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -499,7 +521,7 @@ public class SearchPage implements Navigable {
 
         });
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 70, 70);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -511,7 +533,7 @@ public class SearchPage implements Navigable {
             
         });
 
-        Button filterIcon = ButtonCreater.createButtonWithGivenImage(new Image("Images/Filter.png"), 30, 30);
+        filterIcon = ButtonCreater.createButtonWithGivenImage(new Image("Images/Filter.png"), 30, 30);
         filterIcon.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, CornerRadii.EMPTY, Insets.EMPTY)));
 
         filterIcon.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -530,10 +552,10 @@ public class SearchPage implements Navigable {
             
         });
 
-        Label empty = new Label();
-        Label empty2 = new Label();
-        Label empty3 = new Label();
-        Label empty4 = new Label();
+        empty = new Label();
+        empty2 = new Label();
+        empty3 = new Label();
+        empty4 = new Label();
 
         subroot1OfSubroot1 = new HBox(30);
         subroot1OfSubroot1.getChildren().addAll(empty, back);
@@ -554,7 +576,6 @@ public class SearchPage implements Navigable {
         root.setAlignment(Pos.TOP_CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, CornerRadii.EMPTY, Insets.EMPTY)));
         root.getChildren().addAll(subroot1, empty3, subroot2, empty4, subroot3);
-
     }
 
     @Override

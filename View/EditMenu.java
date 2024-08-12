@@ -24,12 +24,21 @@ import javafx.scene.text.FontWeight;
 
 public class EditMenu implements Navigable {
     VBox root;
-    VBox subroot1OfSubroot1;
     ScrollPane subroot1;
     HBox subroot2;
     HBox subroot3;
+    VBox subroot1OfSubroot1;
     Button create;
     Button delete;
+    Button back;
+    TextField name;
+    TextField type;
+    TextField price;
+    TextField itemInfo;
+    TextField titleForItems;
+    Label title;
+    Label empty;
+    Label empty2;
 
     public EditMenu() {
         ArrayList<TextField> items = new ArrayList<TextField>();
@@ -46,11 +55,11 @@ public class EditMenu implements Navigable {
         subroot1OfSubroot1.minWidthProperty().bind(Bindings.createDoubleBinding(() -> 
         subroot1.getViewportBounds().getWidth(), subroot1.viewportBoundsProperty()));
 
-        TextField name = TextFieldCreater.createEditableTextField("Enter a name for the item", true, false, false, 460, 0, 0, true);
+        name = TextFieldCreater.createEditableTextField("Enter a name for the item", true, false, false, 460, 0, 0, true);
 
-        TextField type = TextFieldCreater.createEditableTextField("Enter a type for the item", true, false, false, 460, 0, 0, true);
+        type = TextFieldCreater.createEditableTextField("Enter a type for the item", true, false, false, 460, 0, 0, true);
 
-        TextField price = TextFieldCreater.createEditableTextField("Enter a price for the item", true, false, false, 460, 0, 0, true);
+        price = TextFieldCreater.createEditableTextField("Enter a price for the item", true, false, false, 460, 0, 0, true);
 
         create = ButtonCreater.createButton("Create");
 
@@ -62,7 +71,7 @@ public class EditMenu implements Navigable {
                     Item item = new Item(name.getText(), type.getText(), Double.valueOf(price.getText()));
                     currentRestaurantOwner.getMenu().addItemToMenu(item);
 
-                    TextField itemInfo = TextFieldCreater.createUneditableTextField(item.toString(), false, 0);
+                    itemInfo = TextFieldCreater.createUneditableTextField(item.toString(), false, 0);
                     itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
                     items.add(itemInfo);
                     
@@ -166,7 +175,7 @@ public class EditMenu implements Navigable {
         subroot3.setAlignment(Pos.CENTER);
         subroot3.getChildren().addAll(create, delete);
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -180,25 +189,25 @@ public class EditMenu implements Navigable {
 
         
 
-        TextField titleForItems = TextFieldCreater.createUneditableTextField("Items", false, 0);
+        titleForItems = TextFieldCreater.createUneditableTextField("Items", false, 0);
         titleForItems.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 40));
         titleForItems.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
         subroot1OfSubroot1.getChildren().add(titleForItems);
 
         for(int n = 0; n < currentRestaurantOwner.getMenu().getMenuAsArrayList().size(); n++) {
-            TextField itemInfo = TextFieldCreater.createUneditableTextField(currentRestaurantOwner.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
+            itemInfo = TextFieldCreater.createUneditableTextField(currentRestaurantOwner.getMenu().getMenuAsArrayList().get(n).toString(), false, 0);
             itemInfo.setBackground(new Background(new BackgroundFill(Color.HOTPINK, CornerRadii.EMPTY, Insets.EMPTY)));
             items.add(itemInfo);
 
             subroot1OfSubroot1.getChildren().add(itemInfo);
         }
 
-        Label title = new Label("Edit Menu");
+        title = new Label("Edit Menu");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
         
-        Label empty = new Label();
-        Label empty2 = new Label();
+        empty = new Label();
+        empty2 = new Label();
 
         root = new VBox(30);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));

@@ -38,6 +38,13 @@ public class CustomerProfile implements Navigable{
     Button editEmail;
     Button editPassword;
     Button editAddress;
+    Button back;
+    TextField username;
+    TextField email;
+    TextField password;
+    TextField address;
+    Label title;
+    Label empty;
 
     public CustomerProfile() {
         Customer currentCustomer = (Customer)DineFinderApplication.currentUser;
@@ -46,13 +53,13 @@ public class CustomerProfile implements Navigable{
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
-        TextField username = TextFieldCreater.createUneditableTextField("Username: " + currentCustomer.getUsername(), true, 1450);
+        username = TextFieldCreater.createUneditableTextField("Username: " + currentCustomer.getUsername(), true, 1450);
 
-        TextField email = TextFieldCreater.createUneditableTextField("Email: " + currentCustomer.getEmail(), true, 1450);
+        email = TextFieldCreater.createUneditableTextField("Email: " + currentCustomer.getEmail(), true, 1450);
 
-        TextField password = TextFieldCreater.createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()), true, 1450);
+        password = TextFieldCreater.createUneditableTextField("Password: " + createAsterisksWithTheLengthOfPassword(currentCustomer.getPassword()), true, 1450);
 
-        TextField address = TextFieldCreater.createUneditableTextField("Address: " + currentCustomer.getAddress().getCityName() + "," + currentCustomer.getAddress().getDistrictName() + "," + currentCustomer.getAddress().getStreetName(), true, 1450);
+        address = TextFieldCreater.createUneditableTextField("Address: " + currentCustomer.getAddress().getCityName() + "," + currentCustomer.getAddress().getDistrictName() + "," + currentCustomer.getAddress().getStreetName(), true, 1450);
 
         applyUsername = ButtonCreater.createButtonWithGivenImage(new Image("Images/Apply.png"), 35, 35);
         applyUsername.setVisible(false);
@@ -291,7 +298,7 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        Button back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
+        back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
         back.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -303,11 +310,11 @@ public class CustomerProfile implements Navigable{
             
         });
 
-        Label title = new Label("Your Profile");
+        title = new Label("Your Profile");
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
         title.setTextFill(Color.WHITE);
 
-        Label empty = new Label();
+        empty = new Label();
 
         subroot1 = new HBox(10);
         subroot1.setAlignment(Pos.CENTER);
