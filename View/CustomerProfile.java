@@ -3,7 +3,6 @@ import java.text.StringCharacterIterator;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
