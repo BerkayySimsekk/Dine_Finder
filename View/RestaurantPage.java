@@ -145,7 +145,6 @@ public class RestaurantPage implements Navigable {
 
         empty = new Label();
         empty2 = new Label();
-        empty3 = new Label();
 
         subroot1OfSubroot4 = new HBox(30);
         subroot1OfSubroot4.getChildren().addAll(empty, back);
@@ -159,7 +158,7 @@ public class RestaurantPage implements Navigable {
         subroot3.getChildren().addAll(address, restaurantRating);
 
         root = new VBox(30);
-        root.getChildren().addAll(subroot4, title, empty3, description, subroot3, subroot1, givenRatingByCustomer, applyRating);
+        root.getChildren().addAll(subroot4, title, description, subroot3, subroot1, givenRatingByCustomer, applyRating);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         root.setAlignment(Pos.TOP_CENTER);
     }   
