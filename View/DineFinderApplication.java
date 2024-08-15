@@ -20,7 +20,7 @@ public class DineFinderApplication extends Application {
         DineFinderApplication.stage = stage;
         stage.getIcons().add(new Image("Images/Logo.png"));
         stage.setTitle("Dine Finder");
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.setMaximized(true);
         stage.setScene(defaultScene);
         

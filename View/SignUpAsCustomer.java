@@ -39,19 +39,19 @@ public class SignUpAsCustomer implements Navigable {
         root.setAlignment(Pos.CENTER);
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         
-        username = TextFieldCreater.createEditableTextField("Enter your username", true, false, true, 650, 0, 650, true);
+        username = TextFieldCreater.createEditableTextField("Enter your username", true, false, false, 710, 0, 0, true);
 
-        email = TextFieldCreater.createEditableTextField("Enter your email", true, false, true, 650, 0, 650, true);
+        email = TextFieldCreater.createEditableTextField("Enter your email", true, false, false, 710, 0, 0, true);
 
-        password = TextFieldCreater.createEditableTextField("Enter your password", true, false, true, 650, 0, 650, true);
+        password = TextFieldCreater.createEditableTextField("Enter your password", true, false, false, 710, 0, 0, true);
 
-        passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, true, 650, 0, 650, true);
+        passwordAgain = TextFieldCreater.createEditableTextField("Enter your password again", true, false, false, 710, 0, 0, true);
 
-        city = TextFieldCreater.createEditableTextField("Enter the city of your address", true, false, true, 650, 0, 650, true);
+        city = TextFieldCreater.createEditableTextField("Enter the city of your address", true, false, false, 710, 0, 0, true);
 
-        district = TextFieldCreater.createEditableTextField("Enter the district of your address", true, false, true, 650, 0, 650, true);
+        district = TextFieldCreater.createEditableTextField("Enter the district of your address", true, false, false, 710, 0, 0, true);
 
-        street = TextFieldCreater.createEditableTextField("Enter the street of your address", true, false, true, 650, 0, 650, true);
+        street = TextFieldCreater.createEditableTextField("Enter the street of your address", false, false, true, 0, 0, 1450, true);
 
         signUp = ButtonCreater.createButton("Sign up");
 
