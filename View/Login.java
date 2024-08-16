@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -31,7 +32,38 @@ public class Login implements Navigable{
         usernameOrEmail = TextFieldCreater.createEditableTextField("Enter your username or email", false, false, true, 0, 0, 650, true);
         password = TextFieldCreater.createEditableTextField("Enter your password", false, false, true, 0, 0, 650, true);
 
+        usernameOrEmail.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(login.getText().equals("User not found")) {
+                    login.setText("Login");
+                }
+
+                if(usernameOrEmail.getText().equals("Enter your username or email")) {
+                    usernameOrEmail.setText(""); 
+                } 
+            }
+            
+        });
+
+        password.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if(login.getText().equals("User not found")) {
+                    login.setText("Login");
+                }
+                
+                if(password.getText().equals("Enter your password")) {
+                    password.setText(""); 
+                } 
+            }
+            
+        });
+
         login = ButtonCreater.createButton("Login");
+
 
         login.setOnAction(new EventHandler<ActionEvent>() {
 
