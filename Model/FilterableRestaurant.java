@@ -1,4 +1,5 @@
 public interface FilterableRestaurant {
+    //Restaurant Filter class implements these methods which allows the filtering process of the restaurants to occur according to various of options indicated below
     public void includesGivenItemType(String type);
     public void sortByAlphabeticalOrderOfRestaurantName();
     public void includesGivenItem(String name);

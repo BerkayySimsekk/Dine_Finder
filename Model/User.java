@@ -1,14 +1,17 @@
 public abstract class User {
+    //instance data members
     protected String password;
     protected String email;
     protected String username;
 
+    //constructs a Restaurant Owner object with the given parameters to the instance data members
     public User(String password, String email, String username) {
         setPassword(password);
         setEmail(email);
         setUsername(username);
     }
 
+    //getters
     public String getPassword() {
         return password;
     }
@@ -21,6 +24,7 @@ public abstract class User {
         return username;
     }
 
+    //setters
     public void setPassword(String password) {
         this.password = password;
     }

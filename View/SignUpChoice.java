@@ -15,6 +15,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 public class SignUpChoice implements Navigable {
+    //nodes used for this class
     VBox root;
     Button signUpAsCustomer;
     Button signUpAsRestaurantOwner;
@@ -23,12 +24,18 @@ public class SignUpChoice implements Navigable {
     Label empty;
 
     public SignUpChoice() {
+        //main root that adds the nodes vertically
         root = new VBox(30);
-        root.setAlignment(Pos.CENTER);;
+        //positions the nodes at the center
+        root.setAlignment(Pos.CENTER);
+        //sets the background color of the root
+        root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
 
+        //a Button object with predetermined width that navigates the user to the page where the user can sign up as customer
         signUpAsCustomer = ButtonCreater.createButton("Sign up as customer");
         signUpAsCustomer.setMinWidth(500);
 
+        //clicking this button navigates the user to the Sign Up As Customer class
         signUpAsCustomer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -37,9 +44,11 @@ public class SignUpChoice implements Navigable {
             }
         });
 
+        //a Button object with predetermined width that navigates the user to the page where the user can sign up as restaurant owner
         signUpAsRestaurantOwner = ButtonCreater.createButton("Sign up as restaurant owner");
         signUpAsRestaurantOwner.setMinWidth(500);
 
+        //clicking this button navigates the user to the Sign Up As Restaurant Owner class
         signUpAsRestaurantOwner.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -48,8 +57,10 @@ public class SignUpChoice implements Navigable {
             }
         });
 
+        //a Button that lets the user go back to the previous page
         back = ButtonCreater.createButtonWithGivenImage(new Image("Images/BackButton.png"), 35, 35);
 
+        //clicking this button directs the user to the page where the user can log in to the application
         back.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -60,16 +71,21 @@ public class SignUpChoice implements Navigable {
             
         });
 
+        //a Label object to set the title of the page
         title = new Label("Choose what to sign up as");
+        //sets the style and size of the text
         title.setFont(Font.font("Arial", FontWeight.NORMAL, FontPosture.REGULAR, 60));
+        //sets the color of the text
         title.setTextFill(Color.WHITE);
 
+        //an empty Label object to leave gaps between nodes
         empty = new Label();
         
-        root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
+        //adds the nodes to the main root vertically
         root.getChildren().addAll(title, empty, signUpAsCustomer, signUpAsRestaurantOwner, back);  
     }
 
+    //a method to navigate to this page by changing the root of the main scene found in the Dine Finder Application class
     public void navigate() {
         DineFinderApplication.stage.getScene().setRoot(root);
     }

@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 
 public class RestaurantFilter implements FilterableRestaurant{
+    //instance data members
     private ListOfUsers listOfUsers;
     private ArrayList<RestaurantOwner> restaurantOwners;
     private ArrayList<RestaurantOwner> filteredRestaurantOwners;
 
+    //constructor that instantiates each instance data member and then fills the Array List for filtered restaurant owners with the objects found in the Array List for all of the
+    //restaurant owners
     public RestaurantFilter() {
         this.listOfUsers = DineFinderApplication.listOfUsers;
         this.restaurantOwners = listOfUsers.getRestaurantOwnersFromListOfUsers();
@@ -12,6 +15,7 @@ public class RestaurantFilter implements FilterableRestaurant{
         cloneRestaurantsListToFilteredRestaurantsList();
     }
 
+    //getters
     public ArrayList<RestaurantOwner> getRestaurants() {
         return restaurantOwners;
     }
@@ -20,17 +24,22 @@ public class RestaurantFilter implements FilterableRestaurant{
         return filteredRestaurantOwners;
     }
 
+    //clones the contents of the Array List for all of the restaurant owners to the Array List for the filtered restaurant owners
     public void cloneRestaurantsListToFilteredRestaurantsList() {
         for(int n = 0; n < restaurantOwners.size(); n++) {
             filteredRestaurantOwners.add(restaurantOwners.get(n));
         }
     }
 
+    //resetting the filter means that after emptying the list for filtered restaurant owners, it is filled once again with the contents of the Array List for all of the restaurant 
+    //owners
     public void resetFilter() {
         filteredRestaurantOwners.clear();
         cloneRestaurantsListToFilteredRestaurantsList();
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the Restaurant Owner objects do not contain the given item type at their menu
     @Override
     public void includesGivenItemType(String type) {
         int amountOfItemsInCurrentMenu;
@@ -50,11 +59,15 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             if(!isFound) {
                 filteredRestaurantOwners.remove(n);
+                //after removing the item when it is found, the indexes of every element found in the Array List shifts by one, the "n" value is decreased by one 
+                //to prevent the incident of skipping an element
                 n--;
             }
         }    
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the Restaurant Owner objects do not contain the given item name at their menu
     @Override
     public void includesGivenItem(String name) {
         int amountOfItemsInCurrentMenu;
@@ -74,11 +87,15 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             if(!isFound) {
                 filteredRestaurantOwners.remove(n);
+                //after removing the item when it is found, the indexes of every element found in the Array List shifts by one, the "n" value is decreased by one 
+                //to prevent the incident of skipping an element
                 n--;
             }
         }           
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the Restaurant Owner objects do not contain at least one item with the given price range at their menu
     @Override
     public void includesItemsBetweenSetPriceRange(double min, double max) {
         int amountOfItemsInCurrentMenu;
@@ -98,11 +115,15 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             if(!isFound) {
                 filteredRestaurantOwners.remove(n);
+                //after removing the item when it is found, the indexes of every element found in the Array List shifts by one, the "n" value is decreased by one 
+                //to prevent the incident of skipping an element
                 n--;
             }
         }      
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that sorts the Restaurant Owner objects found in the Array List for filtered
+    //restaurant owners according to the alphabetical order of their restaurant names with Bubble Sort algorithm
     @Override
     public void sortByAlphabeticalOrderOfRestaurantName() {
         RestaurantOwner temporary;
@@ -118,6 +139,8 @@ public class RestaurantFilter implements FilterableRestaurant{
         } 
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that sorts the Restaurant Owner objects found in the Array List for filtered
+    //restaurant owners according to the ratings of the Restaurant Owner objects with Bubble Sort algorithm
     @Override
     public void sortByRating() {
         RestaurantOwner temporary;
@@ -133,6 +156,8 @@ public class RestaurantFilter implements FilterableRestaurant{
         } 
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that sorts the Restaurant Owner objects found in the Array List for filtered
+    //restaurant owners according to number of ratings given to the Restaurant Owner objects with Bubble Sort algorithm
     @Override
     public void sortByPopularity() {
         RestaurantOwner temporary;
@@ -148,6 +173,8 @@ public class RestaurantFilter implements FilterableRestaurant{
         }     
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the city of the address of Restaurant Owner objects does not match with the taken String object as parameter
     @Override
     public void isFoundInGivenCity(String city) {
         boolean isFound;
@@ -166,6 +193,8 @@ public class RestaurantFilter implements FilterableRestaurant{
         }
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the district of the address of Restaurant Owner objects does not match with the taken String object as parameter
     @Override
     public void isFoundInGivenDistrict(String district) {
         boolean isFound;
@@ -179,11 +208,15 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             if(!isFound) {
                 filteredRestaurantOwners.remove(n);
+                //after removing the item when it is found, the indexes of every element found in the Array List shifts by one, the "n" value is decreased by one 
+                //to prevent the incident of skipping an element
                 n--;
             }
         }    
     }
 
+    //since this class implements Filterable Restaurant interface, it needs to inherit this method that removes the Restaurant Owner objects from the Array List for the filtered 
+    //restaurant owners if the street of the address of Restaurant Owner objects does not match with the taken String object as parameter
     @Override
     public void isFoundInGivenStreet(String street) {
         boolean isFound;
@@ -197,6 +230,8 @@ public class RestaurantFilter implements FilterableRestaurant{
 
             if(!isFound) {
                 filteredRestaurantOwners.remove(n);
+                //after removing the item when it is found, the indexes of every element found in the Array List shifts by one, the "n" value is decreased by one 
+                //to prevent the incident of skipping an element
                 n--;
             }
         }

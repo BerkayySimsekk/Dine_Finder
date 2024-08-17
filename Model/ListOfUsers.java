@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
 public class ListOfUsers {
+    //instance data member
     private ArrayList<User> users;
 
+    //constructs an Array List for users with some predetermined users
     public ListOfUsers() {
+        //instantiating items
         Item item1 = new Item("Margherita Pizza", "Main Course", 30.0);
         Item item2 = new Item("Cheeseburger", "Main Course", 35.0);
         Item item3 = new Item("Caesar Salad", "Appetizer", 20.0);
@@ -65,6 +68,7 @@ public class ListOfUsers {
         Item item59 = new Item("Apple Pie", "Dessert", 11.0);
         Item item60 = new Item("Brownies", "Dessert", 10.0);
 
+        //instantiating menu objects and adding the items to them
         Menu menu1 = new Menu();
         menu1.addItemToMenu(item1);
         menu1.addItemToMenu(item2);
@@ -145,7 +149,7 @@ public class ListOfUsers {
         menu10.addItemToMenu(item59);
         menu10.addItemToMenu(item60);
 
-
+        //instantiating Address objects 
         Address address1 = new Address("123 Main St", "Cityville", "State");
         Address address2 = new Address("456 Elm St", "Townsville", "State");
         Address address3 = new Address("789 Oak St", "Villageville", "State");
@@ -157,6 +161,7 @@ public class ListOfUsers {
         Address address9 = new Address("606 Cherry St", "Lakewood", "State");
         Address address10 = new Address("707 Spruce St", "Rivertown", "State");
 
+        //instantiating Restaurant Owner objects
         RestaurantOwner restaurant1 = new RestaurantOwner("The Food Place", "password1", "email1@example.com", "user1", address1, "A cozy place with delicious meals.");
         RestaurantOwner restaurant2 = new RestaurantOwner("Gourmet Bites", "password2", "email2@example.com", "user2", address2, "High-end dining experience with gourmet food.");
         RestaurantOwner restaurant3 = new RestaurantOwner("Family Diner", "password3", "email3@example.com", "user3", address3, "Family-friendly diner with a wide menu.");
@@ -168,6 +173,7 @@ public class ListOfUsers {
         RestaurantOwner restaurant9 = new RestaurantOwner("Sushi World", "password9", "email9@example.com", "user9", address9, "Fresh sushi and Japanese cuisine.");
         RestaurantOwner restaurant10 = new RestaurantOwner("Pizza Haven", "password10", "email10@example.com", "user10", address10, "Delicious pizzas with a variety of toppings.");
 
+        //setting the menu of the restaurants
         restaurant1.setMenu(menu1);
         restaurant2.setMenu(menu2);
         restaurant3.setMenu(menu3);
@@ -179,10 +185,13 @@ public class ListOfUsers {
         restaurant9.setMenu(menu9);
         restaurant10.setMenu(menu10);
 
+        //instantiating the Array List that will keep the users
         users = new ArrayList<User>();
 
+        //instantiating Customer object
         Customer customer = new Customer("12345", "berkay@gmail.com", "berkay", address8);
 
+        //adding the Customer and Restaurant Owner objects to the Array List that contains the users
         users.add(restaurant1);
         users.add(restaurant2);
         users.add(restaurant3);
@@ -196,19 +205,23 @@ public class ListOfUsers {
         users.add(customer);
     }
 
+    //getter
     public ArrayList<User> getUserList() {
         return users;
     }
 
+    //adds the taken parameter to the Array List that contains users
     public void addUserToList(User user) {
         users.add(user);
     }
 
+    //returns an Array List that only contains Restaurant Owner objects found in the Array List that contains User objects
     public ArrayList<RestaurantOwner> getRestaurantOwnersFromListOfUsers() {
         RestaurantOwner restaurantOwner;
 
         ArrayList<RestaurantOwner> restaurantOwners = new ArrayList<RestaurantOwner>();
 
+        //a loop that gets the Restaurant Owner objects
         for(int n = 0; n < users.size(); n++) {
             if(users.get(n) instanceof RestaurantOwner) {
                 restaurantOwner = (RestaurantOwner)users.get(n);
@@ -219,11 +232,13 @@ public class ListOfUsers {
         return restaurantOwners;
     }
 
+    //returns an Array List that only contains Customer objects found in the Array List that contains User objects
     public ArrayList<Customer> getCustomersFromListOfUsers() {
         Customer customer;
 
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
+        //a loop that gets the Customer objects
         for(int n = 0; n < users.size(); n++) {
             if(users.get(n) instanceof Customer) {
                 customer = (Customer)users.get(n);
