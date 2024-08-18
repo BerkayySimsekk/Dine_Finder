@@ -16,12 +16,12 @@ import javafx.scene.text.FontWeight;
 
 public class SignUpChoice implements Navigable {
     //nodes used for this class
-    VBox root;
-    Button signUpAsCustomer;
-    Button signUpAsRestaurantOwner;
-    Button back;
-    Label title;
-    Label empty;
+    private VBox root;
+    private Button signUpAsCustomer;
+    private Button signUpAsRestaurantOwner;
+    private Button back;
+    private Label title;
+    private Label empty;
 
     public SignUpChoice() {
         //main root that adds the nodes vertically

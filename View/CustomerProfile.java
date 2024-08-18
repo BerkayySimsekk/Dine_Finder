@@ -23,29 +23,29 @@ import javafx.scene.text.FontWeight;
 
 public class CustomerProfile implements Navigable{
     //nodes used for this class
-    VBox root;
-    HBox subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    HBox subroot4;
-    Button editUsername;
-    Button applyPassword;
-    Button applyEmail;
-    Button applyUsername;
-    Button applyAddress;
-    Button editEmail;
-    Button editPassword;
-    Button editAddress;
-    Button back;
-    TextField username;
-    TextField email;
-    TextField password;
-    TextField address;
-    Label title;
-    Label empty;
+    private VBox root;
+    private HBox subroot1;
+    private HBox subroot2;
+    private HBox subroot3;
+    private HBox subroot4;
+    private Button editUsername;
+    private Button applyPassword;
+    private Button applyEmail;
+    private Button applyUsername;
+    private Button applyAddress;
+    private Button editEmail;
+    private Button editPassword;
+    private Button editAddress;
+    private Button back;
+    private TextField username;
+    private TextField email;
+    private TextField password;
+    private TextField address;
+    private Label title;
+    private Label empty;
     //these boolean variables needs to be declared outside the constructor so that they can be used inside the inner classes
-    boolean usernameAlreadyExists;
-    boolean emailAlreadyExists;
+    private boolean usernameAlreadyExists;
+    private boolean emailAlreadyExists;
 
     public CustomerProfile() {
         //since this class is to display information regarding the customer that entered this application, the User object should be turned into Customer object

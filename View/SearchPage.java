@@ -31,22 +31,22 @@ public class SearchPage implements Navigable {
     public static TextField searchFood;
 
     //nodes used for this class
-    VBox root;
-    VBox subroot1;
-    HBox subroot2;
-    ScrollPane subroot3;
-    HBox subroot1OfSubroot1;
-    HBox subroot1OfSubroot2;
-    VBox subroot1OfSubroot3;
-    Button search;
-    Button back;
-    Button filterIcon;
-    Label empty;
-    Label empty2;
-    Label empty3;
-    Label empty4;
-    ComboBox<String> filter;
-    TextField searchResults;
+    private VBox root;
+    private VBox subroot1;
+    private HBox subroot2;
+    private ScrollPane subroot3;
+    private HBox subroot1OfSubroot1;
+    private HBox subroot1OfSubroot2;
+    private VBox subroot1OfSubroot3;
+    private Button search;
+    private Button back;
+    private Button filterIcon;
+    private Label empty;
+    private Label empty2;
+    private Label empty3;
+    private Label empty4;
+    private ComboBox<String> filter;
+    private TextField searchResults;
 
     public SearchPage() {
         //this root is to add the restaurants as clickable Button objects

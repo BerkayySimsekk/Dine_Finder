@@ -19,24 +19,24 @@ import javafx.scene.text.FontWeight;
 
 public class SignUpAsRestaurantOwner implements Navigable {
     //nodes used for this class
-    VBox root;
-    HBox subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    HBox subroot4;
-    TextField username;
-    TextField email;
-    TextField password;
-    TextField passwordAgain;
-    TextField restaurantName;
-    TextField city;
-    TextField district;
-    TextField street;
-    TextField description;
-    Button back;
-    Button signUp;
-    Label signUpAsRestaurantOwner;
-    Label empty;
+    private VBox root;
+    private HBox subroot1;
+    private HBox subroot2;
+    private HBox subroot3;
+    private HBox subroot4;
+    private TextField username;
+    private TextField email;
+    private TextField password;
+    private TextField passwordAgain;
+    private TextField restaurantName;
+    private TextField city;
+    private TextField district;
+    private TextField street;
+    private TextField description;
+    private Button back;
+    private Button signUp;
+    private Label signUpAsRestaurantOwner;
+    private Label empty;
 
     public SignUpAsRestaurantOwner() {
         //main root that adds the nodes vertically

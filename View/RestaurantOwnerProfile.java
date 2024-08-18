@@ -23,37 +23,37 @@ import javafx.scene.text.FontWeight;
 
 public class RestaurantOwnerProfile implements Navigable{
     //nodes used for this class
-    VBox root;
-    HBox subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    HBox subroot4;
-    HBox subroot5;
-    HBox subroot6;
-    boolean usernameAlreadyExists;
-    boolean emailAlreadyExists;
-    Button editUsername;
-    Button applyPassword;
-    Button applyEmail;
-    Button applyUsername;
-    Button editEmail;
-    Button editPassword;
-    Button applyRestaurantName;
-    Button applyAddress;
-    Button applyDescription;
-    Button editRestaurantName;
-    Button editAddress;
-    Button editDescription;
-    Button editMenu;
-    Button back;
-    TextField username;
-    TextField email;
-    TextField password;
-    TextField restaurantName;
-    TextField address;
-    TextField description;
-    Label title;
-    Label empty;
+    private VBox root;
+    private HBox subroot1;
+    private HBox subroot2;
+    private HBox subroot3;
+    private HBox subroot4;
+    private HBox subroot5;
+    private HBox subroot6;
+    private boolean usernameAlreadyExists;
+    private boolean emailAlreadyExists;
+    private Button editUsername;
+    private Button applyPassword;
+    private Button applyEmail;
+    private Button applyUsername;
+    private Button editEmail;
+    private Button editPassword;
+    private Button applyRestaurantName;
+    private Button applyAddress;
+    private Button applyDescription;
+    private Button editRestaurantName;
+    private Button editAddress;
+    private Button editDescription;
+    private Button editMenu;
+    private Button back;
+    private TextField username;
+    private TextField email;
+    private TextField password;
+    private TextField restaurantName;
+    private TextField address;
+    private TextField description;
+    private Label title;
+    private Label empty;
 
     public RestaurantOwnerProfile() {
         //since this class is to display information regarding the restaurant owner that entered this application, the User object should be turned into Restaurant Owner object

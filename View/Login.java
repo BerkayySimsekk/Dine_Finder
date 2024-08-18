@@ -17,13 +17,13 @@ import javafx.scene.text.FontWeight;
 
 public class Login implements Navigable{
     //nodes used for this class
-    VBox root;
-    Button login;
-    Button haveNotSignedUpYet;
-    TextField usernameOrEmail;
-    TextField password;
-    Label title;
-    Label empty;
+    private VBox root;
+    private Button login;
+    private Button haveNotSignedUpYet;
+    private TextField usernameOrEmail;
+    private TextField password;
+    private Label title;
+    private Label empty;
 
     public Login() {
         //the root of this class is initialized to add the nodes vertically

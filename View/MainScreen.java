@@ -19,34 +19,34 @@ import javafx.scene.text.FontWeight;
 
 public class MainScreen implements Navigable {
     //nodes used for this class
-    BorderPane root;
-    VBox subroot1;
-    VBox subroot2;
-    VBox subroot3;
-    HBox subroot1OfSubroot1;
-    HBox subroot1OfSubroot2;
-    HBox subroot2OfSubroot2;
-    HBox subroot1OfSubroot3;
-    Button profile;
-    Button search;
-    Button burger;
-    Button pizza;
-    Button fries;
-    Button chicken;
-    Button steak;
-    Button salad;
-    Button hotdog;
-    Button pasta;
-    Button back;
-    TextField searchFood;
-    Label title;
-    Label empty;
-    Label empty2;
-    Label empty3;
-    Label empty4;
-    Label empty5;
-    Label empty6;
-
+    private BorderPane root;
+    private VBox subroot1;
+    private VBox subroot2;
+    private VBox subroot3;
+    private HBox subroot1OfSubroot1;
+    private HBox subroot1OfSubroot2;
+    private HBox subroot2OfSubroot2;
+    private HBox subroot1OfSubroot3;
+    private Button profile;
+    private Button search;
+    private Button burger;
+    private Button pizza;
+    private Button fries;
+    private Button chicken;
+    private Button steak;
+    private Button salad;
+    private Button hotdog;
+    private Button pasta;
+    private Button back;
+    private TextField searchFood;
+    private Label title;
+    private Label empty;
+    private Label empty2;
+    private Label empty3;
+    private Label empty4;
+    private Label empty5;
+    private Label empty6;
+ 
     public MainScreen() {
         //Restaurant Filter object is instantiated in the constructor of this class so that every time we reach this page, the updated version the restaurants can be seen in the search page
         //and restaurant page

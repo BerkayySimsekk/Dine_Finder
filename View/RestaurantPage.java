@@ -21,25 +21,24 @@ import javafx.scene.text.FontWeight;
 
 public class RestaurantPage implements Navigable {
     //nodes used for this class
-    VBox root;
-    ScrollPane subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    VBox subroot4;
-    VBox subroot1OfSubroot1;
-    HBox subroot1OfSubroot4;
-    TextField titleForItems;
-    TextField itemInfo;
-    TextField address;
-    TextField restaurantRating;
-    TextField description;
-    TextField givenRatingByCustomer;
-    Button applyRating;
-    Button back;
-    Label title;
-    Label empty;
-    Label empty2;
-    Label empty3;
+    private VBox root;
+    private ScrollPane subroot1;
+    private VBox subroot2;
+    private HBox subroot3;
+    private VBox subroot1OfSubroot1;
+    private HBox subroot1OfSubroot2;
+    private TextField titleForItems;
+    private TextField itemInfo;
+    private TextField address;
+    private TextField restaurantRating;
+    private TextField description;
+    private TextField givenRatingByCustomer;
+    private Button applyRating;
+    private Button back;
+    private Label title;
+    private Label empty;
+    private Label empty2;
+    private Label empty3;
 
     public RestaurantPage() {
         //to add the restaurants vertically
@@ -174,12 +173,12 @@ public class RestaurantPage implements Navigable {
         empty3 = new Label();
 
         //the reason why there is a subroot for the fourth subroot is because it is convenient to leave gaps horizontally and vertically this way
-        subroot1OfSubroot4 = new HBox(30);
-        subroot1OfSubroot4.getChildren().addAll(empty, back);
-        subroot4 = new VBox(10);
+        subroot1OfSubroot2 = new HBox(30);
+        subroot1OfSubroot2.getChildren().addAll(empty, back);
+        subroot2 = new VBox(10);
         //positions the nodes found in the fourth subroot to the top left corner of the space allocated for fourth subroot
-        subroot4.setAlignment(Pos.TOP_LEFT);
-        subroot4.getChildren().addAll(empty2, subroot1OfSubroot4);
+        subroot2.setAlignment(Pos.TOP_LEFT);
+        subroot2.getChildren().addAll(empty2, subroot1OfSubroot2);
 
         //a subroot to add the uneditable fields for displaying address and restaurant rating next to each other
         subroot3 = new HBox(10);
@@ -189,7 +188,7 @@ public class RestaurantPage implements Navigable {
 
         //a main root to add all of the nodes vertically
         root = new VBox(30);
-        root.getChildren().addAll(subroot4, title, description, subroot3, subroot1, givenRatingByCustomer, applyRating, empty3);
+        root.getChildren().addAll(subroot2, title, description, subroot3, subroot1, givenRatingByCustomer, applyRating, empty3);
         //sets the background of the main root
         root.setBackground(new Background(new BackgroundFill(Color.DEEPPINK, new CornerRadii(0), new Insets(0))));
         //sets the positioning of the main root to the top center

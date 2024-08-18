@@ -24,22 +24,22 @@ import javafx.scene.text.FontWeight;
 
 public class EditMenu implements Navigable {
     //nodes used for this class
-    VBox root;
-    ScrollPane subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    VBox subroot1OfSubroot1;
-    Button create;
-    Button delete;
-    Button back;
-    TextField name;
-    TextField type;
-    TextField price;
-    TextField itemInfo;
-    TextField titleForItems;
-    Label title;
-    Label empty;
-    Label empty2;
+    private VBox root;
+    private ScrollPane subroot1;
+    private HBox subroot2;
+    private HBox subroot3;
+    private VBox subroot1OfSubroot1;
+    private Button create;
+    private Button delete;
+    private Button back;
+    private TextField name;
+    private TextField type;
+    private TextField price;
+    private TextField itemInfo;
+    private TextField titleForItems;
+    private Label title;
+    private Label empty;
+    private Label empty2;
 
     public EditMenu() {
         //keeping track of items as Text Field objects in order to display them in the Scroll Pane object

@@ -19,21 +19,21 @@ import javafx.scene.text.FontWeight;
 
 public class SignUpAsCustomer implements Navigable {
     //nodes used for this class
-    VBox root;
-    HBox subroot1;
-    HBox subroot2;
-    HBox subroot3;
-    TextField username;
-    TextField email;
-    TextField password;
-    TextField passwordAgain;
-    TextField city;
-    TextField district;
-    TextField street;
-    Button signUp;
-    Button back;
-    Label signUpAsCustomer;
-    Label empty;
+    private VBox root;
+    private HBox subroot1;
+    private HBox subroot2;
+    private HBox subroot3;
+    private TextField username;
+    private TextField email;
+    private TextField password;
+    private TextField passwordAgain;
+    private TextField city;
+    private TextField district;
+    private TextField street;
+    private Button signUp;
+    private Button back;
+    private Label signUpAsCustomer;
+    private Label empty;
 
     public SignUpAsCustomer() {
         //main root that adds the nodes vertically
