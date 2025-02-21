@@ -1,6 +1,6 @@
 # Dine Finder 
 
-A personal project to practice the knowledge I gained from CS 102 using JavaFX. You can either use the application as a restaurant owner or customer. There are multiple existing restaurant owner accounts and a single customer account which can be found in the ListOfUsers class to login. Sign up option can be used as well to create an account of the desired type and login. Since this is a personal project to practice my knowledge, 
+A personal project to practice the knowledge I gained from CS 102 using JavaFX. You can either use the application as a restaurant owner or customer. There are multiple existing restaurant owner accounts and a single customer account which can be found in the ListOfUsers class to log in. Sign up option can be used as well to create an account of the desired type and log in. Since this is a personal project to practice my knowledge, 
 there is no database used to store the information of customers and restaurant owners. Thus, the accounts that are created using the application itself are deleted after exiting the application.
 
 ## How to Run the Program
